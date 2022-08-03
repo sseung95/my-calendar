@@ -1,13 +1,18 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
-import { ko } from 'date-fns/esm/locale';
 import 'react-datepicker/dist/react-datepicker.css';
-import DateTimeInfo from './DateTimeInfo';
+import { useEffect, useState } from 'react';
+import { ko } from 'date-fns/esm/locale';
 import { addHours, setHours, setMinutes } from 'date-fns';
 
-const DateTimePicker = () => {
+import DateTimeInfo from './DateTimeInfo';
+
+type DateTimePickerProps = {
+  isAllDay: boolean;
+};
+
+const DateTimePicker: React.FC<DateTimePickerProps> = ({ isAllDay }) => {
   const [startDate, setStartDate] = useState(setMinutes(new Date(), 0));
   const [endDate, setEndDate] = useState(
     setHours(startDate, startDate.getHours() + 1)
@@ -46,25 +51,29 @@ const DateTimePicker = () => {
   };
 
   return (
-    <div style={{ display: 'flex' }}>
-      <DatePicker
-        selected={startDate}
-        onChange={handleStartDate}
-        locale={ko}
-        showTimeSelect
-        timeIntervals={5}
-        dateFormat="M월 d일 (eee)/h:mm aa" // 날짜와 시간을 '/' 로 구분
-        customInput={<DateTimeInfo />}
-      />
-      <DatePicker
-        selected={endDate}
-        onChange={handleEndDate}
-        locale={ko}
-        showTimeSelect
-        timeIntervals={5}
-        dateFormat="M월 d일 (eee)/h:mm aa"
-        customInput={<DateTimeInfo isInvalid={isInvalidEndDate} />}
-      />
+    <div>
+      <div style={{ display: 'flex' }}>
+        <DatePicker
+          selected={startDate}
+          onChange={handleStartDate}
+          locale={ko}
+          showTimeSelect={!isAllDay}
+          timeIntervals={5}
+          dateFormat="M월 d일 (eee)/h:mm aa" // 날짜와 시간을 '/' 로 구분
+          customInput={<DateTimeInfo isAllDay={isAllDay} />}
+        />
+        <DatePicker
+          selected={endDate}
+          onChange={handleEndDate}
+          locale={ko}
+          showTimeSelect={!isAllDay}
+          timeIntervals={5}
+          dateFormat="M월 d일 (eee)/h:mm aa"
+          customInput={
+            <DateTimeInfo isAllDay={isAllDay} isInvalid={isInvalidEndDate} />
+          }
+        />
+      </div>
     </div>
   );
 };
