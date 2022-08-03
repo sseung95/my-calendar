@@ -10,13 +10,21 @@ import DateTimeInfo from './DateTimeInfo';
 
 type DateTimePickerProps = {
   isAllDay: boolean;
+  startDate: Date;
+  endDate: Date;
+  setIsInvalid: React.Dispatch<React.SetStateAction<boolean>>;
+  setStartDate: React.Dispatch<React.SetStateAction<Date>>;
+  setEndDate: React.Dispatch<React.SetStateAction<Date>>;
 };
 
-const DateTimePicker: React.FC<DateTimePickerProps> = ({ isAllDay }) => {
-  const [startDate, setStartDate] = useState(setMinutes(new Date(), 0));
-  const [endDate, setEndDate] = useState(
-    setHours(startDate, startDate.getHours() + 1)
-  );
+const DateTimePicker: React.FC<DateTimePickerProps> = ({
+  isAllDay,
+  setIsInvalid,
+  startDate,
+  endDate,
+  setStartDate,
+  setEndDate,
+}) => {
   const [isFirstEditing, setIsFirstEditing] = useState(true);
   const [isInvalidEndDate, setIsInvalidEndDate] = useState(false);
 
@@ -27,6 +35,10 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({ isAllDay }) => {
       setIsInvalidEndDate(false);
     }
   };
+
+  useEffect(() => {
+    setIsInvalid(isInvalidEndDate);
+  }, [isInvalidEndDate]);
 
   useEffect(() => {
     // 종료일 선택하기 전일 때만 종료일을 시작일 시간 + 1

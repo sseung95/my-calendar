@@ -2,9 +2,18 @@
 import { css } from '@emotion/react';
 import ColorCircle from './ColorCircle';
 
-const ColorPicker = () => {
+type ColorPickerProps = {
+  setLabel: React.Dispatch<React.SetStateAction<string>>;
+};
+
+const ColorPicker: React.FC<ColorPickerProps> = ({ setLabel }) => {
+  const handleChangeColor = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const label = e.target.id;
+    setLabel(label);
+  };
+
   return (
-    <div css={ColorPickerWrapper}>
+    <div css={ColorPickerWrapper} onChange={handleChangeColor}>
       <ColorCircle color="01" />
       <ColorCircle color="02" />
       <ColorCircle color="03" />

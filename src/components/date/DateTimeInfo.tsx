@@ -8,10 +8,6 @@ const DateTimeInfo: React.FC<any> = forwardRef(
     const date = value.split('/')[0];
     const time = value.split('/')[1];
 
-    if (isInvalid) {
-      console.log('유효하지 않음');
-    }
-
     return (
       <div
         onClick={onClick}
