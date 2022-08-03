@@ -11,6 +11,7 @@ const ColorCircle: React.FC<ColorCircleProps> = ({ color }) => {
     <>
       <input
         id={color}
+        defaultChecked={color === '01'}
         type="radio"
         name="color-selctor"
         css={css`
