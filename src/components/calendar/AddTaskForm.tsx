@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import DateTimePicker from '../date/DateTimePicker';
+import ColorPicker from '../label/ColorPicker';
 import Toggle from '../UI/Toggle';
 
 const AddTaskForm = () => {
@@ -12,6 +13,8 @@ const AddTaskForm = () => {
         <Toggle setIsAllDay={setIsAllDay} />
         <DateTimePicker isAllDay={isAllDay} />
       </div>
+      <input type="text" placeholder="메모" />
+      <ColorPicker />
     </div>
   );
 };
