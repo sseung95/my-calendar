@@ -2,6 +2,7 @@
 import { css } from '@emotion/react';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router';
 import { RootState } from '../../store';
 import Label from './Label';
 
@@ -26,6 +27,7 @@ const Calendar: React.FC<CalendarProps> = ({
   );
   const prevDay = new Date(year, month - 1, 0).getDay(); // 지난달의 마지막 요일
   const lastDay = new Date(year, month, 0).getDate(); // 현재 월의 마지막 날 구하기
+  const navigate = useNavigate();
 
   const handleGoPrevMonth = () => {
     if (month === 1) {
@@ -70,7 +72,11 @@ const Calendar: React.FC<CalendarProps> = ({
           ))}
 
           {[...Array(lastDay)].map((n, idx) => (
-            <div key={'l' + idx} id={`date-${idx + 1}`}>
+            <div
+              key={'l' + idx}
+              id={`date-${idx + 1}`}
+              onClick={() => navigate(`/${year}/${month}/${idx + 1}`)}
+            >
               <div>{idx + 1}</div>
 
               {taskList

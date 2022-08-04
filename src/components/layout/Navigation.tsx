@@ -25,7 +25,7 @@ const Navigation = () => {
         </li>
         <li>
           <NavLink
-            to="/task"
+            to="/add"
             children={(navData) =>
               navData.isActive ? (
                 <img src={activePlusIcon} alt="일정 추가" />
