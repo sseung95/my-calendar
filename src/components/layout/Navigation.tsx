@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import calendarIcon from '../../assets/calendar-icon.svg';
 import activeCalendarIcon from '../../assets/calendar-orange-icon.svg';
@@ -25,7 +25,7 @@ const Navigation = () => {
         </li>
         <li>
           <NavLink
-            to="/add"
+            to="/task"
             children={(navData) =>
               navData.isActive ? (
                 <img src={activePlusIcon} alt="일정 추가" />

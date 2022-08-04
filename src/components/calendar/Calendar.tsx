@@ -78,6 +78,7 @@ const Calendar: React.FC<CalendarProps> = ({
                 .map((task) => (
                   <Label
                     key={task.id}
+                    id={task.id}
                     title={task.title}
                     labelColor={task.label}
                   />

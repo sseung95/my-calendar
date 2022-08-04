@@ -4,14 +4,26 @@ import checkIcon from '.././../assets/check-white-icon.svg';
 
 type ColorCircleProps = {
   color: string;
+  label: string;
+  setLabel: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const ColorCircle: React.FC<ColorCircleProps> = ({ color }) => {
+const ColorCircle: React.FC<ColorCircleProps> = ({
+  color,
+  label,
+  setLabel,
+}) => {
+  const handleChangeColor = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const label = e.target.id;
+    setLabel(label);
+  };
+
   return (
     <>
       <input
         id={color}
-        defaultChecked={color === '01'}
+        checked={label === color}
+        onChange={handleChangeColor}
         type="radio"
         name="color-selctor"
         css={css`

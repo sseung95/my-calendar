@@ -1,26 +1,20 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { useEffect, useState } from 'react';
 
 type ToggleProps = {
+  isAllDay: boolean;
   setIsAllDay: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const Toggle: React.FC<ToggleProps> = ({ setIsAllDay }) => {
-  const [active, setActive] = useState(false);
-
+const Toggle: React.FC<ToggleProps> = ({ isAllDay, setIsAllDay }) => {
   const handleToggle = () => {
-    setActive(!active);
+    setIsAllDay(!isAllDay);
   };
-
-  useEffect(() => {
-    setIsAllDay(active);
-  }, [active]);
 
   return (
     <label
       htmlFor="toggle"
-      css={[ToggleStyle, active && Active]}
+      css={[ToggleStyle, isAllDay && Active]}
       onClick={handleToggle}
     >
       <span className="toggleButton"></span>

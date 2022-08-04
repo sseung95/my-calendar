@@ -10,7 +10,7 @@ type task = {
   label: string;
 };
 
-const initialState: { items: task[]; isEditing: boolean | null } = {
+const initialState: { items: task[] } = {
   items: [
     {
       id: '1',
@@ -76,7 +76,6 @@ const initialState: { items: task[]; isEditing: boolean | null } = {
       label: '15',
     },
   ],
-  isEditing: null,
 };
 
 const taskSlice = createSlice({
@@ -88,7 +87,20 @@ const taskSlice = createSlice({
         ...action.payload,
       });
     },
-    editItem(state, action) {},
+    editItem(state, action: PayloadAction<task>) {
+      const editedList = state.items.map((item) =>
+        item.id === action.payload.id
+          ? {
+              ...item,
+              ...action.payload,
+            }
+          : item
+      );
+
+      return {
+        items: editedList,
+      };
+    },
     removeItem(state, action) {},
   },
 });
