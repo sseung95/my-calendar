@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import DateTimePicker from '../date/DateTimePicker';
 import ColorPicker from '../label/ColorPicker';
 import Toggle from '../UI/Toggle';
@@ -6,7 +6,8 @@ import checkIcon from '../../assets/check-black-icon.svg';
 import { setHours, setMinutes } from 'date-fns';
 import { useDispatch, useSelector } from 'react-redux';
 import { taskActions } from '../../store/taskSlice';
-import { useNavigate } from 'react-router';
+import { RootState } from '../../store';
+import { useNavigate, useParams } from 'react-router';
 
 type task = {
   id: string;
@@ -18,7 +19,7 @@ type task = {
   label: string;
 };
 
-const AddTaskForm = () => {
+const EditTaskForm = () => {
   const [title, setTitle] = useState('');
   const [startDate, setStartDate] = useState(setMinutes(new Date(), 0));
   const [endDate, setEndDate] = useState(
@@ -27,11 +28,30 @@ const AddTaskForm = () => {
   const [isAllDay, setIsAllDay] = useState(false);
   const [memo, setMemo] = useState('');
   const [label, setLabel] = useState('01');
-
   const [isInvalid, setIsInvalid] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const params = useParams();
+
+  const taskList = useSelector((state: RootState) => state.task.items);
+
+  useEffect(() => {
+    const taskId = params.taskId;
+
+    const task = taskList.find((task) => task.id === taskId);
+
+    if (task) {
+      setTitle(task.title);
+      setStartDate(task.startDate);
+      setEndDate(task.endDate);
+      setIsAllDay(task.isAllDay);
+      setMemo(task.memo);
+      setLabel(task.label);
+
+      console.log(task);
+    }
+  }, [params]);
 
   const handleAddTask = () => {
     if (isInvalid) {
@@ -39,19 +59,19 @@ const AddTaskForm = () => {
       return;
     }
 
-    // 추가
-    const taskItem: task = {
-      id: new Date().getTime().toString(),
-      title: title ? title : '제목없음',
-      startDate,
-      endDate,
-      isAllDay,
-      memo,
-      label,
-    };
-
-    dispatch(taskActions.addItem(taskItem));
-    navigate('/');
+    if (params.taskId) {
+      const taskItem: task = {
+        id: params.taskId,
+        title: title ? title : '제목없음',
+        startDate,
+        endDate,
+        isAllDay,
+        memo,
+        label,
+      };
+      dispatch(taskActions.editItem(taskItem));
+      navigate('/');
+    }
   };
 
   const handleChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -95,4 +115,4 @@ const AddTaskForm = () => {
   );
 };
 
-export default AddTaskForm;
+export default EditTaskForm;
