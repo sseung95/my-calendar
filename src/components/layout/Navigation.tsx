@@ -1,28 +1,39 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
+import { Link, NavLink } from 'react-router-dom';
 
 import calendarIcon from '../../assets/calendar-icon.svg';
+import activeCalendarIcon from '../../assets/calendar-orange-icon.svg';
 import plusIcon from '../../assets/plus-icon.svg';
-import userIcon from '../../assets/user-icon.svg';
+import activePlusIcon from '../../assets/plus-orange-icon.svg';
 
 const Navigation = () => {
   return (
     <nav css={Nav}>
       <ul css={Ul}>
         <li>
-          <a href="/">
-            <img src={calendarIcon} alt="캘린더" />
-          </a>
+          <NavLink
+            to="/"
+            children={(navData) =>
+              navData.isActive ? (
+                <img src={activeCalendarIcon} alt="캘린더" />
+              ) : (
+                <img src={calendarIcon} alt="캘린더" />
+              )
+            }
+          />
         </li>
         <li>
-          <a href="/add">
-            <img src={plusIcon} alt="일정 추가" />
-          </a>
-        </li>
-        <li>
-          <a href="/mypage">
-            <img src={userIcon} alt="마이페이지" />
-          </a>
+          <NavLink
+            to="/add"
+            children={(navData) =>
+              navData.isActive ? (
+                <img src={activePlusIcon} alt="일정 추가" />
+              ) : (
+                <img src={plusIcon} alt="일정 추가" />
+              )
+            }
+          />
         </li>
       </ul>
     </nav>

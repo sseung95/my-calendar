@@ -7,6 +7,7 @@ import { setHours, setMinutes } from 'date-fns';
 import { useDispatch, useSelector } from 'react-redux';
 import { taskActions } from '../../store/taskSlice';
 import { RootState } from '../../store';
+import { useNavigate } from 'react-router';
 
 type task = {
   id: string;
@@ -31,6 +32,7 @@ const AddTaskForm = () => {
   const [isInvalid, setIsInvalid] = useState(false);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const isEditing = useSelector((state: RootState) => state.task.isEditing);
 
   const handleAddTask = () => {
@@ -54,6 +56,7 @@ const AddTaskForm = () => {
       };
 
       dispatch(taskActions.addItem(taskItem));
+      navigate('/');
     }
   };
 
