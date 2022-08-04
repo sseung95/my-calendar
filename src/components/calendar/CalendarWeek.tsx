@@ -1,41 +1,37 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import React from 'react';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
-import { RootState } from '../../store';
-import Label from './Label';
-import { format, getDay } from 'date-fns';
-import addImg from '../../assets/add-button.svg';
-import moreIcon from '../../assets/more-icon.svg';
 import { getDayStr } from '../../utils/dateUtil';
+import addImg from '../../assets/add-button.svg';
+import Day from './Day';
+import TaskList from '../task/TaskList';
 
 type CalendarProps = {
   year: number;
   month: number;
   date: number;
-  setYear: React.Dispatch<React.SetStateAction<number>>;
-  setMonth: React.Dispatch<React.SetStateAction<number>>;
 };
 
-const CalendarWeek: React.FC<CalendarProps> = ({
-  year,
-  month,
-  date,
-  setYear,
-  setMonth,
-}) => {
+const CalendarWeek: React.FC<CalendarProps> = ({ year, month, date }) => {
   const navigate = useNavigate();
-  const taskList = useSelector((state: RootState) => state.task.items).filter(
-    (task) =>
-      task.startDate.getFullYear() === year &&
-      task.startDate.getMonth() + 1 === month
-  );
 
-  const handleGoPrevMonth = () => {};
+  const handleGoPrevMonth = () => {
+    if (month === 1) {
+      navigate(`/${year - 1}/12/1`);
+    } else {
+      navigate(`/${year}/${month - 1}/1`);
+    }
+  };
 
-  const handleGoNextvMonth = () => {};
+  const handleGoNextvMonth = () => {
+    if (month === 12) {
+      navigate(`/${year + 1}/1/1`);
+    } else {
+      navigate(`/${year}/${month + 1}/1`);
+    }
+  };
 
   return (
     <>
@@ -61,27 +57,17 @@ const CalendarWeek: React.FC<CalendarProps> = ({
               ) : (
                 <div key={idx}></div>
               );
-
-              // const targetDate = new Date(`${year}/${month}/${date - 3 + idx}`);
-              // return <div key={idx}>{targetDate.toString()}</div>;
             })}
           </div>
           <div css={DateBoard}>
             {[...Array(7)].map((n, idx) => (
-              <div key={'l' + idx} id={`date-${idx + 1}`}>
-                <div>{date - 3 + idx > 0 ? date - 3 + idx : ''}</div>
-
-                {taskList
-                  .filter((task) => task.startDate.getDate() === date - 3 + idx)
-                  .map((task) => (
-                    <Label
-                      key={task.id}
-                      id={task.id}
-                      title={task.title}
-                      labelColor={task.label}
-                    />
-                  ))}
-              </div>
+              <Day
+                key={idx}
+                year={year}
+                month={month}
+                date={date - 3}
+                idx={idx}
+              />
             ))}
           </div>
         </div>
@@ -91,42 +77,9 @@ const CalendarWeek: React.FC<CalendarProps> = ({
         <div>
           {year}.{month}.{date}
         </div>
-        <div>
-          {taskList
-            .filter((task) => task.startDate.getDate() === date)
-            .map((task) => (
-              <div
-                key={task.id}
-                css={css`
-                  display: flex;
-                `}
-              >
-                <div>
-                  {task.isAllDay && <div>ALL DAY</div>}
-                  {!task.isAllDay && (
-                    <>
-                      <div>{format(task.startDate, 'HH:mm')}</div>
-                      <div>{format(task.endDate, 'HH:mm')}</div>
-                    </>
-                  )}
-                </div>
-                <div
-                  css={css`
-                    width: 3px;
-                    height: 16px;
-                    background-color: var(--label-color-${task.label});
-                  `}
-                ></div>
-                <div onClick={() => navigate(`/edit/${task.id}`)}>
-                  <div>{task.title}</div>
-                  <div>{task.memo}</div>
-                </div>
-                <div>
-                  <img src={moreIcon} alt="더보기" />
-                </div>
-              </div>
-            ))}
-        </div>
+
+        <TaskList year={year} month={month} date={date} />
+
         <Link to={`/add/${year}/${month}/${date}`}>
           <img src={addImg} alt="일정 추가" />
         </Link>
