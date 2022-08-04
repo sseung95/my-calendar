@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
-import DateTimePicker from '../date/DateTimePicker';
-import ColorPicker from '../label/ColorPicker';
-import Toggle from '../UI/Toggle';
-import checkIcon from '../../assets/check-black-icon.svg';
 import { setHours, setMinutes } from 'date-fns';
 import { useDispatch, useSelector } from 'react-redux';
 import { taskActions } from '../../store/taskSlice';
 import { useNavigate, useParams } from 'react-router';
+import DateTimePicker from '../date/DateTimePicker';
+import ColorPicker from '../label/ColorPicker';
+import Toggle from '../UI/Toggle';
+import checkIcon from '../../assets/check-black-icon.svg';
+import cancelIcon from '../../assets/x-icon.svg';
 
 type task = {
   id: string;
@@ -45,6 +46,10 @@ const AddTaskForm = () => {
     }
   }, [params]);
 
+  const handleCancel = () => {
+    navigate(-1);
+  };
+
   const handleAddTask = () => {
     if (isInvalid) {
       alert('시작 날짜는 종료 날짜 이전이어야 합니다.');
@@ -76,6 +81,7 @@ const AddTaskForm = () => {
 
   return (
     <div>
+      <img src={cancelIcon} onClick={handleCancel} />
       <img src={checkIcon} onClick={handleAddTask} />
       <div>
         <input

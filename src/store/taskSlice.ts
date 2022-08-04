@@ -101,7 +101,11 @@ const taskSlice = createSlice({
         items: editedList,
       };
     },
-    removeItem(state, action) {},
+    removeItem(state, action: PayloadAction<string>) {
+      return {
+        items: [...state.items.filter((item) => item.id !== action.payload)],
+      };
+    },
   },
 });
 
