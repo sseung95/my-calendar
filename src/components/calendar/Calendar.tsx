@@ -59,7 +59,7 @@ const Calendar: React.FC<CalendarProps> = ({
       <div>
         <div css={DateHead}>
           <div>MON</div>
-          <div>THU</div>
+          <div>TUE</div>
           <div>WED</div>
           <div>THU</div>
           <div>FRI</div>
