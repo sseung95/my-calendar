@@ -1,12 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import DateTimePicker from '../date/DateTimePicker';
 import ColorPicker from '../label/ColorPicker';
 import Toggle from '../UI/Toggle';
 import checkIcon from '../../assets/check-black-icon.svg';
-import { addHours, setHours, setMinutes } from 'date-fns';
+import { setHours, setMinutes } from 'date-fns';
 import { useDispatch, useSelector } from 'react-redux';
 import { taskActions } from '../../store/taskSlice';
 import { RootState } from '../../store';
+import { useNavigate } from 'react-router';
 
 type task = {
   id: string;
@@ -31,12 +32,8 @@ const AddTaskForm = () => {
   const [isInvalid, setIsInvalid] = useState(false);
 
   const dispatch = useDispatch();
-  const items = useSelector((state: RootState) => state.task.items);
+  const navigate = useNavigate();
   const isEditing = useSelector((state: RootState) => state.task.isEditing);
-
-  useEffect(() => {
-    console.log(items);
-  }, [items]);
 
   const handleAddTask = () => {
     if (isInvalid) {
@@ -59,6 +56,7 @@ const AddTaskForm = () => {
       };
 
       dispatch(taskActions.addItem(taskItem));
+      navigate('/');
     }
   };
 
