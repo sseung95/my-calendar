@@ -1,6 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store';
+import Label from './Label';
 
 type CalendarProps = {
   year: number;
@@ -16,7 +19,11 @@ const Calendar: React.FC<CalendarProps> = ({
   setMonth,
 }) => {
   const [today, setToday] = useState(new Date().getDate());
-
+  const taskList = useSelector((state: RootState) => state.task.items).filter(
+    (task) =>
+      task.startDate.getFullYear() === year &&
+      task.startDate.getMonth() + 1 === month
+  );
   const prevDay = new Date(year, month - 1, 0).getDay(); // 지난달의 마지막 요일
   const lastDay = new Date(year, month, 0).getDate(); // 현재 월의 마지막 날 구하기
 
@@ -61,8 +68,21 @@ const Calendar: React.FC<CalendarProps> = ({
           {[...Array(prevDay)].map((n, idx) => (
             <div key={'p' + idx}></div>
           ))}
+
           {[...Array(lastDay)].map((n, idx) => (
-            <div key={'l' + idx}>{idx + 1}</div>
+            <div key={'l' + idx} id={`date-${idx + 1}`}>
+              <div>{idx + 1}</div>
+
+              {taskList
+                .filter((task) => task.startDate.getDate() === idx + 1)
+                .map((task) => (
+                  <Label
+                    key={task.id}
+                    title={task.title}
+                    labelColor={task.label}
+                  />
+                ))}
+            </div>
           ))}
         </div>
       </div>
@@ -79,8 +99,8 @@ const DateHead = css`
 const DateBoard = css`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
+  grid-auto-rows: minmax(auto, 80px);
   text-align: center;
 `;
 
 export default Calendar;
-2;
