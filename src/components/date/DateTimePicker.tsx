@@ -71,7 +71,7 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
           locale={ko}
           showTimeSelect={!isAllDay}
           timeIntervals={5}
-          dateFormat="M월 d일 (eee)/h:mm aa" // 날짜와 시간을 '/' 로 구분
+          dateFormat="M월 d일 (eee)/HH:mm" // 날짜와 시간을 '/' 로 구분
           customInput={<DateTimeInfo isAllDay={isAllDay} />}
         />
         <DatePicker
@@ -80,7 +80,7 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
           locale={ko}
           showTimeSelect={!isAllDay}
           timeIntervals={5}
-          dateFormat="M월 d일 (eee)/h:mm aa"
+          dateFormat="M월 d일 (eee)/HH:mm"
           customInput={
             <DateTimeInfo isAllDay={isAllDay} isInvalid={isInvalidEndDate} />
           }
