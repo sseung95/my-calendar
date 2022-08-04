@@ -70,7 +70,7 @@ const EditTaskForm = () => {
         label,
       };
       dispatch(taskActions.editItem(taskItem));
-      navigate('/');
+      navigate(-1);
     }
   };
 

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import DateTimePicker from '../date/DateTimePicker';
 import ColorPicker from '../label/ColorPicker';
 import Toggle from '../UI/Toggle';
@@ -6,7 +6,7 @@ import checkIcon from '../../assets/check-black-icon.svg';
 import { setHours, setMinutes } from 'date-fns';
 import { useDispatch, useSelector } from 'react-redux';
 import { taskActions } from '../../store/taskSlice';
-import { useNavigate } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 
 type task = {
   id: string;
@@ -32,6 +32,18 @@ const AddTaskForm = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const params = useParams();
+
+  useEffect(() => {
+    if (params.year && params.month && params.date) {
+      let date = new Date(`${params.year}/${params.month}/${params.date}`);
+      date = setHours(date, new Date().getHours());
+      date = setMinutes(date, 0);
+
+      setStartDate(date);
+      setEndDate(setHours(date, date.getHours() + 1));
+    }
+  }, [params]);
 
   const handleAddTask = () => {
     if (isInvalid) {
@@ -51,7 +63,7 @@ const AddTaskForm = () => {
     };
 
     dispatch(taskActions.addItem(taskItem));
-    navigate('/');
+    navigate(-1);
   };
 
   const handleChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -1,6 +1,5 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { useNavigate } from 'react-router';
 
 type LabelProps = {
   id: string;
@@ -9,11 +8,8 @@ type LabelProps = {
 };
 
 const Label: React.FC<LabelProps> = ({ id, title, labelColor }) => {
-  const navigate = useNavigate();
-
   return (
     <div
-      onClick={() => navigate(`/task/${id}`)}
       css={css`
         background-color: ${`var(--label-color-${labelColor})`};
         color: #fff;
