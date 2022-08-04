@@ -9,7 +9,10 @@ const MonthCalendar = () => {
   const [month, setMonth] = useState(getMonth());
   const [monthStr, setMonthStr] = useState(getMonthStr());
 
-  // TODO: 날짜가 변경되었을 때를 대비해 setState 해줄 수 있는 로직이 필요함
+  useEffect(() => {
+    const changedMonthStr = getMonthStr(new Date(`${year}/${month}`));
+    setMonthStr(changedMonthStr);
+  }, [month]);
 
   return (
     <div>
