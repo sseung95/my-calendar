@@ -4,7 +4,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useEffect, useState } from 'react';
 import { ko } from 'date-fns/esm/locale';
-import { addHours, setHours, setMinutes } from 'date-fns';
+import { addHours } from 'date-fns';
 
 import DateTimeInfo from './DateTimeInfo';
 
