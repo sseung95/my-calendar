@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router';
 
 import moreIcon from '../../assets/more-icon.svg';
 import { taskActions } from '../../store/taskSlice';
-import TaskMoreMenu from './TaskMoreMenu';
+import TaskMoreMenu from '../TaskMoreMenu/TaskMoreMenu';
 
 type task = {
   id: string;

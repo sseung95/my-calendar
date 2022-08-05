@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import ColorCircle from './ColorCircle';
+import ColorCircle from './Color';
 
 type ColorPickerProps = {
   label: string;

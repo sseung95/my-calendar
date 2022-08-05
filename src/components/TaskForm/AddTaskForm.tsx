@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
-import DateTimePicker from '../date/DateTimePicker';
-import ColorPicker from '../label/ColorPicker';
-import Toggle from '../UI/Toggle';
-import checkIcon from '../../assets/check-black-icon.svg';
 import { setHours, setMinutes } from 'date-fns';
 import { useDispatch, useSelector } from 'react-redux';
 import { taskActions } from '../../store/taskSlice';
-import { RootState } from '../../store';
 import { useNavigate, useParams } from 'react-router';
+import DateTimePicker from '../DateTimePicker/DateTimePicker';
+import ColorPicker from '../ColorPicker/ColorPicker';
+import Toggle from '../UI/Toggle';
+import checkIcon from '../../assets/check-black-icon.svg';
 import cancelIcon from '../../assets/x-icon.svg';
 
 type task = {
@@ -20,7 +19,7 @@ type task = {
   label: string;
 };
 
-const EditTaskForm = () => {
+const AddTaskForm = () => {
   const [title, setTitle] = useState('');
   const [startDate, setStartDate] = useState(setMinutes(new Date(), 0));
   const [endDate, setEndDate] = useState(
@@ -29,28 +28,21 @@ const EditTaskForm = () => {
   const [isAllDay, setIsAllDay] = useState(false);
   const [memo, setMemo] = useState('');
   const [label, setLabel] = useState('01');
+
   const [isInvalid, setIsInvalid] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const params = useParams();
 
-  const taskList = useSelector((state: RootState) => state.task.items);
-
   useEffect(() => {
-    const taskId = params.taskId;
+    if (params.year && params.month && params.date) {
+      let date = new Date(`${params.year}/${params.month}/${params.date}`);
+      date = setHours(date, new Date().getHours());
+      date = setMinutes(date, 0);
 
-    const task = taskList.find((task) => task.id === taskId);
-
-    if (task) {
-      setTitle(task.title);
-      setStartDate(task.startDate);
-      setEndDate(task.endDate);
-      setIsAllDay(task.isAllDay);
-      setMemo(task.memo);
-      setLabel(task.label);
-
-      console.log(task);
+      setStartDate(date);
+      setEndDate(setHours(date, date.getHours() + 1));
     }
   }, [params]);
 
@@ -64,19 +56,19 @@ const EditTaskForm = () => {
       return;
     }
 
-    if (params.taskId) {
-      const taskItem: task = {
-        id: params.taskId,
-        title: title ? title : '제목없음',
-        startDate,
-        endDate,
-        isAllDay,
-        memo,
-        label,
-      };
-      dispatch(taskActions.editItem(taskItem));
-      navigate(-1);
-    }
+    // 추가
+    const taskItem: task = {
+      id: new Date().getTime().toString(),
+      title: title ? title : '제목없음',
+      startDate,
+      endDate,
+      isAllDay,
+      memo,
+      label,
+    };
+
+    dispatch(taskActions.addItem(taskItem));
+    navigate(-1);
   };
 
   const handleChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -121,4 +113,4 @@ const EditTaskForm = () => {
   );
 };
 
-export default EditTaskForm;
+export default AddTaskForm;

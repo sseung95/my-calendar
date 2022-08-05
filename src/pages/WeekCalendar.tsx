@@ -2,7 +2,7 @@
 import { css } from '@emotion/react';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import CalendarWeek from '../components/calendar/CalendarWeek';
+import CalendarWeek from '../components/Calendar/CalendarWeek';
 
 const WeekCalendar = () => {
   const params = useParams();
@@ -18,13 +18,7 @@ const WeekCalendar = () => {
 
   return (
     <div>
-      <CalendarWeek
-        year={year}
-        month={month}
-        date={date}
-        setYear={setYear}
-        setMonth={setMonth}
-      />
+      <CalendarWeek year={year} month={month} date={date} />
     </div>
   );
 };

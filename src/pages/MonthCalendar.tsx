@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import { useEffect, useState } from 'react';
-import Calendar from '../components/calendar/Calendar';
+import Calendar from '../components/Calendar/Calendar';
 import { getYear, getMonth, getMonthStr } from '../utils/dateUtil';
 
 const MonthCalendar = () => {

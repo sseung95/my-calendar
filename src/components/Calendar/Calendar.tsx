@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import React, { useState } from 'react';
-import Day from './Day';
+import Day from '../Day/Day';
 import prevIcon from '../../assets/left-icon.svg';
 import nextIcon from '../../assets/right-icon.svg';
 import { Body01 } from '../../styles/typography';

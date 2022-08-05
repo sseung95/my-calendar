@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { RootState } from '../../store';
 import { Caption02 } from '../../styles/typography';
-import Label from './Label';
+import Label from '../Label/Label';
 
 type DayProps = {
   year: number;

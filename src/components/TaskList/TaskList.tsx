@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
-import Task from './Task';
+import Task from '../Task/Task';
 
 type TaskListProps = {
   year: number;

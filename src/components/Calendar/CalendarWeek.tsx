@@ -9,8 +9,8 @@ import prevIcon from '../../assets/left-icon.svg';
 import nextIcon from '../../assets/right-icon.svg';
 import { Body01 } from '../../styles/typography';
 import { Pointer } from '../../styles/unit';
-import Day from './Day';
-import TaskList from '../task/TaskList';
+import Day from '../Day/Day';
+import TaskList from '../TaskList/TaskList';
 
 type CalendarProps = {
   year: number;
