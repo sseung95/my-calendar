@@ -5,6 +5,10 @@ import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import { getDayStr } from '../../utils/dateUtil';
 import addImg from '../../assets/add-button.svg';
+import prevIcon from '../../assets/left-icon.svg';
+import nextIcon from '../../assets/right-icon.svg';
+import { Body01 } from '../../styles/typography';
+import { Pointer } from '../../styles/unit';
 import Day from './Day';
 import TaskList from '../task/TaskList';
 
@@ -35,13 +39,13 @@ const CalendarWeek: React.FC<CalendarProps> = ({ year, month, date }) => {
 
   return (
     <>
-      <div>
-        <div>
-          <button onClick={handleGoPrevMonth}>prev</button>
-          <div>
+      <div css={CalendarWrapper}>
+        <div css={CalendarHeader}>
+          <img src={prevIcon} onClick={handleGoPrevMonth} css={Pointer} />
+          <div css={Body01}>
             {year}.{month.toString().padStart(2, '0')}
           </div>
-          <button onClick={handleGoNextvMonth}>next</button>
+          <img src={nextIcon} onClick={handleGoNextvMonth} css={Pointer} />
         </div>
         <div>
           <div css={DateHead}>
@@ -88,16 +92,38 @@ const CalendarWeek: React.FC<CalendarProps> = ({ year, month, date }) => {
   );
 };
 
+const CalendarWrapper = css`
+  background-color: #fff;
+  border-radius: 32px 32px 0px 0px;
+  padding: 2.4rem 0.8rem;
+`;
+
+const CalendarHeader = css`
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1.6rem;
+  margin-bottom: 2.1rem;
+  color: var(--gray-08);
+`;
+
 const DateHead = css`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   text-align: center;
+  color: var(--gray-04);
+
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.2rem;
+  letter-spacing: 1.5px;
+
+  margin-bottom: 0.5rem;
 `;
 
 const DateBoard = css`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-auto-rows: minmax(auto, 80px);
+  grid-auto-rows: minmax(auto, 8rem);
   text-align: center;
 `;
 

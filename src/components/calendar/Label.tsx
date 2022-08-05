@@ -1,5 +1,5 @@
-/** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
+import styled from '@emotion/styled';
+import { Caption01 } from '../../styles/typography';
 
 type LabelProps = {
   id: string;
@@ -9,15 +9,23 @@ type LabelProps = {
 
 const Label: React.FC<LabelProps> = ({ id, title, labelColor }) => {
   return (
-    <div
-      css={css`
-        background-color: ${`var(--label-color-${labelColor})`};
-        color: #fff;
-      `}
-    >
-      {title}
-    </div>
+    <LabelWrapper labelColor={`var(--label-color-${labelColor})`}>
+      <Title>{title}</Title>
+    </LabelWrapper>
   );
 };
+
+const LabelWrapper = styled.div<{ labelColor: string }>`
+  background-color: ${(props) => props.labelColor};
+  height: 1.4rem;
+  overflow: hidden;
+  border-radius: 4px;
+`;
+
+const Title = styled.span`
+  ${Caption01}
+  color: #fff;
+  line-height: 1.5rem;
+`;
 
 export default Label;

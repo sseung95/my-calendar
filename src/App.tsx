@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Route, Routes } from 'react-router';
 import Layout from './components/layout/Layout';
 import AddTask from './pages/AddTask';
@@ -6,6 +7,16 @@ import MonthCalendar from './pages/MonthCalendar';
 import WeekCalendar from './pages/WeekCalendar';
 
 function App() {
+  const setScreenSize = () => {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  };
+
+  useEffect(() => {
+    setScreenSize();
+    window.addEventListener('resize', setScreenSize);
+  }, []);
+
   return (
     <Layout>
       <Routes>

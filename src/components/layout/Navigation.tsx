@@ -41,7 +41,6 @@ const Navigation = () => {
 };
 
 const Nav = css`
-  height: 9.2rem;
   background: #faf9f9;
 `;
 
