@@ -1,5 +1,3 @@
-/** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useEffect, useState } from 'react';
@@ -7,15 +5,7 @@ import { ko } from 'date-fns/esm/locale';
 import { addHours } from 'date-fns';
 
 import DateTimeInfo from './DateTimeInfo';
-
-type DateTimePickerProps = {
-  isAllDay: boolean;
-  startDate: Date;
-  endDate: Date;
-  setIsInvalid: React.Dispatch<React.SetStateAction<boolean>>;
-  setStartDate: React.Dispatch<React.SetStateAction<Date>>;
-  setEndDate: React.Dispatch<React.SetStateAction<Date>>;
-};
+import { DateTimePickerProps } from './DateTimePicker.types';
 
 const DateTimePicker: React.FC<DateTimePickerProps> = ({
   isAllDay,

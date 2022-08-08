@@ -1,12 +1,7 @@
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import Task from '../Task/Task';
-
-type TaskListProps = {
-  year: number;
-  month: number;
-  date: number;
-};
+import { TaskListProps } from './TaskList.types';
 
 const TaskList: React.FC<TaskListProps> = ({ year, month, date }) => {
   const taskList = useSelector((state: RootState) => state.task.items).filter(

@@ -1,18 +1,17 @@
 /** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
-import React, { useState } from 'react';
+import React from 'react';
 import Day from '../Day/Day';
 import prevIcon from '../../assets/left-icon.svg';
 import nextIcon from '../../assets/right-icon.svg';
 import { Body01 } from '../../styles/typography';
 import { Pointer } from '../../styles/unit';
-
-type CalendarProps = {
-  year: number;
-  month: number;
-  setYear: React.Dispatch<React.SetStateAction<number>>;
-  setMonth: React.Dispatch<React.SetStateAction<number>>;
-};
+import {
+  CalendarHeader,
+  CalendarWrapper,
+  DateBoard,
+  DateHead,
+} from './Calendar.styled';
+import { CalendarProps } from './Calendar.types';
 
 const Calendar: React.FC<CalendarProps> = ({
   year,
@@ -42,20 +41,16 @@ const Calendar: React.FC<CalendarProps> = ({
   };
 
   return (
-    <div css={CalendarWrapper}>
-      <div css={CalendarHeader}>
+    <CalendarWrapper>
+      <CalendarHeader>
         <img src={prevIcon} onClick={handleGoPrevMonth} css={Pointer} />
         <div css={Body01}>
           {year}.{month.toString().padStart(2, '0')}
         </div>
         <img src={nextIcon} onClick={handleGoNextvMonth} css={Pointer} />
-      </div>
-      <div
-        css={css`
-          flex-grow: 1;
-        `}
-      >
-        <div css={DateHead}>
+      </CalendarHeader>
+      <div css={{ flexGrow: 1 }}>
+        <DateHead>
           <div>MON</div>
           <div>TUE</div>
           <div>WED</div>
@@ -63,8 +58,8 @@ const Calendar: React.FC<CalendarProps> = ({
           <div>FRI</div>
           <div>SAT</div>
           <div>SUN</div>
-        </div>
-        <div css={DateBoard}>
+        </DateHead>
+        <DateBoard>
           {[...Array(prevDay)].map((n, idx) => (
             <div key={'p' + idx}></div>
           ))}
@@ -72,51 +67,10 @@ const Calendar: React.FC<CalendarProps> = ({
           {[...Array(lastDay)].map((n, idx) => (
             <Day key={idx} year={year} month={month} date={1} idx={idx} />
           ))}
-        </div>
+        </DateBoard>
       </div>
-    </div>
+    </CalendarWrapper>
   );
 };
-
-const CalendarWrapper = css`
-  background-color: #fff;
-  border-radius: 32px 32px 0px 0px;
-  padding: 2.4rem 0.8rem;
-
-  flex-grow: 1;
-
-  display: flex;
-  flex-direction: column;
-`;
-
-const CalendarHeader = css`
-  display: flex;
-  justify-content: space-between;
-  padding: 0 1.6rem;
-  padding-bottom: 2.1rem;
-  color: var(--gray-08);
-`;
-
-const DateHead = css`
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  text-align: center;
-  color: var(--gray-04);
-
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.2rem;
-  letter-spacing: 1.5px;
-
-  margin-bottom: 0.5rem;
-`;
-
-const DateBoard = css`
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(auto-fit, minmax(50px, 1fr));
-  text-align: center;
-  height: 100%;
-`;
 
 export default Calendar;

@@ -1,15 +1,10 @@
-/** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
 import ColorCircle from './Color';
-
-type ColorPickerProps = {
-  label: string;
-  setLabel: React.Dispatch<React.SetStateAction<string>>;
-};
+import { ColorPickerWrapper } from './ColorPicker.styled';
+import { ColorPickerProps } from './ColorPicker.types';
 
 const ColorPicker: React.FC<ColorPickerProps> = ({ label, setLabel }) => {
   return (
-    <div css={ColorPickerWrapper}>
+    <ColorPickerWrapper>
       <ColorCircle color="01" label={label} setLabel={setLabel} />
       <ColorCircle color="02" label={label} setLabel={setLabel} />
       <ColorCircle color="03" label={label} setLabel={setLabel} />
@@ -28,14 +23,8 @@ const ColorPicker: React.FC<ColorPickerProps> = ({ label, setLabel }) => {
       <ColorCircle color="16" label={label} setLabel={setLabel} />
       <ColorCircle color="17" label={label} setLabel={setLabel} />
       <ColorCircle color="18" label={label} setLabel={setLabel} />
-    </div>
+    </ColorPickerWrapper>
   );
 };
-
-const ColorPickerWrapper = css`
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-row-gap: 1.5rem;
-`;
 
 export default ColorPicker;

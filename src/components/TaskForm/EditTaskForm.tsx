@@ -9,16 +9,7 @@ import { taskActions } from '../../store/taskSlice';
 import { RootState } from '../../store';
 import { useNavigate, useParams } from 'react-router';
 import cancelIcon from '../../assets/x-icon.svg';
-
-type task = {
-  id: string;
-  title: string;
-  startDate: Date;
-  endDate: Date;
-  isAllDay: boolean;
-  memo: string;
-  label: string;
-};
+import { task } from '../Task/Task.types';
 
 const EditTaskForm = () => {
   const [title, setTitle] = useState('');

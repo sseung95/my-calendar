@@ -8,20 +8,7 @@ import { useNavigate } from 'react-router';
 import moreIcon from '../../assets/more-icon.svg';
 import { taskActions } from '../../store/taskSlice';
 import TaskMoreMenu from '../TaskMoreMenu/TaskMoreMenu';
-
-type task = {
-  id: string;
-  title: string;
-  startDate: Date;
-  endDate: Date;
-  isAllDay: boolean;
-  memo: string;
-  label: string;
-};
-
-type taskProps = {
-  task: task;
-};
+import { taskProps } from './Task.types';
 
 const Task: React.FC<taskProps> = ({ task }) => {
   const navigate = useNavigate();
@@ -33,11 +20,7 @@ const Task: React.FC<taskProps> = ({ task }) => {
   };
 
   return (
-    <div
-      css={css`
-        display: flex;
-      `}
-    >
+    <div css={{ display: 'flex' }}>
       <div>
         {task.isAllDay && <div>ALL DAY</div>}
         {!task.isAllDay && (
