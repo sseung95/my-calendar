@@ -1,17 +1,10 @@
-import styled from '@emotion/styled';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { RootState } from '../../store';
-import { Caption02 } from '../../styles/typography';
-import Label from './Label';
-
-type DayProps = {
-  year: number;
-  month: number;
-  date: number;
-  idx: number;
-};
+import Label from '../Label/Label';
+import { DateStyle, DayWrapper, LabelListWrapper } from './Day.styled';
+import { DayProps } from './Day.types';
 
 const Day: React.FC<DayProps> = ({ year, month, date, idx }) => {
   const navigate = useNavigate();
@@ -22,12 +15,6 @@ const Day: React.FC<DayProps> = ({ year, month, date, idx }) => {
   );
   const lastDay = new Date(year, month, 0).getDate(); // 현재 월의 마지막 날 구하기
   const dayRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    if (!dayRef.current) return;
-
-    console.log(dayRef.current.clientHeight);
-  }, [dayRef]);
 
   const isToday = (targetDate: number) => {
     const today = new Date();
@@ -73,50 +60,5 @@ const Day: React.FC<DayProps> = ({ year, month, date, idx }) => {
     </DayWrapper>
   );
 };
-
-const DayWrapper = styled.div`
-  padding: 0.1rem;
-  cursor: pointer;
-
-  display: flex;
-  flex-direction: column;
-  gap: 0.1rem;
-
-  overflow: hidden;
-
-  &:hover {
-    background-color: #fafafa;
-    border-radius: 4px;
-  }
-`;
-
-const DateStyle = styled.div<{ isToday: boolean; day: number }>`
-  ${Caption02}
-  width: 1.5rem;
-  height: 1.5rem;
-  line-height: 1.7rem;
-  align-self: center;
-
-  margin-bottom: 0.1rem;
-
-  color: var(--gray-08);
-  ${(props) => props.day === 0 && 'color: var(--red);'}
-  ${(props) => props.day === 6 && 'color: var(--blue);'}
-
-  ${(props) =>
-    props.isToday &&
-    `
-    font-weight: 500;
-    color: #fff;
-    background-color: var(--gray-08);
-    border-radius: 100px;
-  `}
-`;
-
-const LabelListWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.1rem;
-`;
 
 export default Day;

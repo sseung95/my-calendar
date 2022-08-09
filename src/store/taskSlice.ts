@@ -19,7 +19,7 @@ const initialState: { items: task[] } = {
       endDate: new Date('2022/08/11 12:00'),
       isAllDay: false,
       memo: '망원에서 유명한 밥집으로 고고',
-      label: '05',
+      label: '14',
     },
     {
       id: '2',
@@ -37,7 +37,7 @@ const initialState: { items: task[] } = {
       endDate: new Date('2022/08/13 17:30'),
       isAllDay: false,
       memo: '망원역 드림이비인후과 진료',
-      label: '02',
+      label: '10',
     },
     {
       id: '4',

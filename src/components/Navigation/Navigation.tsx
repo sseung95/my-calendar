@@ -1,16 +1,15 @@
-/** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
 import { NavLink } from 'react-router-dom';
 
 import calendarIcon from '../../assets/calendar-icon.svg';
 import activeCalendarIcon from '../../assets/calendar-orange-icon.svg';
 import plusIcon from '../../assets/plus-icon.svg';
 import activePlusIcon from '../../assets/plus-orange-icon.svg';
+import { NavWrapper, Ul } from './Navigation.styled';
 
 const Navigation = () => {
   return (
-    <nav css={Nav}>
-      <ul css={Ul}>
+    <NavWrapper>
+      <Ul>
         <li>
           <NavLink
             to="/"
@@ -35,25 +34,9 @@ const Navigation = () => {
             }
           />
         </li>
-      </ul>
-    </nav>
+      </Ul>
+    </NavWrapper>
   );
 };
-
-const Nav = css`
-  background: #faf9f9;
-`;
-
-const Ul = css`
-  height: 100%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-
-  li > a {
-    display: block;
-    padding: 20px;
-  }
-`;
 
 export default Navigation;
