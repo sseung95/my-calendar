@@ -29,6 +29,7 @@ export const EndDate = styled.div`
 
 export const TaskContent = styled.div`
   flex-shrink: 1;
+  cursor: pointer;
 `;
 
 export const Label = styled.div`

@@ -3,6 +3,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { useEffect, useState } from 'react';
 import { ko } from 'date-fns/esm/locale';
 import { addHours } from 'date-fns';
+import rightIcon from '../../assets/right-icon-black.svg';
 
 import DateTimeInfo from './DateTimeInfo';
 import { DateTimePickerProps } from './DateTimePicker.types';
@@ -53,8 +54,8 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
   };
 
   return (
-    <div>
-      <div style={{ display: 'flex' }}>
+    <div style={{ display: 'flex', gap: '.6rem' }}>
+      <div>
         <DatePicker
           selected={startDate}
           onChange={handleStartDate}
@@ -64,6 +65,9 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
           dateFormat="M월 d일 (eee)/HH:mm" // 날짜와 시간을 '/' 로 구분
           customInput={<DateTimeInfo isAllDay={isAllDay} />}
         />
+      </div>
+      <img src={rightIcon} />
+      <div>
         <DatePicker
           selected={endDate}
           onChange={handleEndDate}

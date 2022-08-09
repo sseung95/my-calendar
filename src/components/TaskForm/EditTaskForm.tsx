@@ -3,13 +3,26 @@ import DateTimePicker from '../DateTimePicker/DateTimePicker';
 import ColorPicker from '../ColorPicker/ColorPicker';
 import Toggle from '../UI/Toggle';
 import checkIcon from '../../assets/check-black-icon.svg';
+import cancelIcon from '../../assets/x-icon.svg';
+import clockIcon from '../../assets/clock-icon.svg';
+import memoIcon from '../../assets/memo-icon.svg';
+import colorIcon from '../../assets/color-icon.svg';
 import { setHours, setMinutes } from 'date-fns';
 import { useDispatch, useSelector } from 'react-redux';
 import { taskActions } from '../../store/taskSlice';
 import { RootState } from '../../store';
 import { useNavigate, useParams } from 'react-router';
-import cancelIcon from '../../assets/x-icon.svg';
 import { task } from '../Task/Task.types';
+
+import {
+  ButtonWrapper,
+  ColumnWrapper,
+  SubTitle,
+  SubTitleInput,
+  TaskFormRow,
+  TaskFormWrapper,
+  TitleInput,
+} from './TaskForm.styled';
 
 const EditTaskForm = () => {
   const [title, setTitle] = useState('');
@@ -79,36 +92,53 @@ const EditTaskForm = () => {
   };
 
   return (
-    <div>
-      <img src={cancelIcon} onClick={handleCancel} />
-      <img src={checkIcon} onClick={handleAddTask} />
+    <TaskFormWrapper>
+      <ButtonWrapper>
+        <img src={cancelIcon} onClick={handleCancel} />
+        <img src={checkIcon} onClick={handleAddTask} />
+      </ButtonWrapper>
       <div>
-        <input
+        <TitleInput
           type="text"
           placeholder="제목"
           value={title}
           onChange={handleChangeTitle}
         />
-        <div>
-          <Toggle isAllDay={isAllDay} setIsAllDay={setIsAllDay} />
-          <DateTimePicker
-            isAllDay={isAllDay}
-            setIsInvalid={setIsInvalid}
-            startDate={startDate}
-            endDate={endDate}
-            setStartDate={setStartDate}
-            setEndDate={setEndDate}
+        <TaskFormRow>
+          <img src={clockIcon} />
+          <ColumnWrapper>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <SubTitle>종일</SubTitle>
+              <Toggle isAllDay={isAllDay} setIsAllDay={setIsAllDay} />
+            </div>
+            <DateTimePicker
+              isAllDay={isAllDay}
+              setIsInvalid={setIsInvalid}
+              startDate={startDate}
+              endDate={endDate}
+              setStartDate={setStartDate}
+              setEndDate={setEndDate}
+            />
+          </ColumnWrapper>
+        </TaskFormRow>
+        <TaskFormRow>
+          <img src={memoIcon} />
+          <SubTitleInput
+            type="text"
+            placeholder="메모"
+            value={memo}
+            onChange={handleChangeMemo}
           />
-        </div>
-        <input
-          type="text"
-          placeholder="메모"
-          value={memo}
-          onChange={handleChangeMemo}
-        />
-        <ColorPicker label={label} setLabel={setLabel} />
+        </TaskFormRow>
+        <TaskFormRow>
+          <img src={colorIcon} />
+          <ColumnWrapper>
+            <SubTitle>라벨 색상</SubTitle>
+            <ColorPicker label={label} setLabel={setLabel} />
+          </ColumnWrapper>
+        </TaskFormRow>
       </div>
-    </div>
+    </TaskFormWrapper>
   );
 };
 
