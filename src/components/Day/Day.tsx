@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { RootState } from '../../store';
@@ -15,12 +15,6 @@ const Day: React.FC<DayProps> = ({ year, month, date, idx }) => {
   );
   const lastDay = new Date(year, month, 0).getDate(); // 현재 월의 마지막 날 구하기
   const dayRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    if (!dayRef.current) return;
-
-    console.log(dayRef.current.clientHeight);
-  }, [dayRef]);
 
   const isToday = (targetDate: number) => {
     const today = new Date();

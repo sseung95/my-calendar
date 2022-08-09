@@ -5,7 +5,6 @@ export const NavWrapper = styled.nav`
 `;
 
 export const Ul = styled.ul`
-  height: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;

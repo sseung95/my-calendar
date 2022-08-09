@@ -11,6 +11,15 @@ export const CalendarWrapper = styled.div`
   flex-direction: column;
 `;
 
+export const CalendarWeekWrapper = styled.div`
+  background-color: #fff;
+  border-radius: 32px 32px 0px 0px;
+  padding: 2.4rem 0.8rem;
+
+  display: flex;
+  flex-direction: column;
+`;
+
 export const CalendarHeader = styled.div`
   display: flex;
   justify-content: space-between;

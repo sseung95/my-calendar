@@ -1,44 +1,42 @@
 /** @jsxImportSource @emotion/react */
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { useNavigate } from 'react-router';
-import { Link } from 'react-router-dom';
 import { getDayStr } from '../../utils/dateUtil';
 
 import prevIcon from '../../assets/left-icon.svg';
 import nextIcon from '../../assets/right-icon.svg';
 import { Body01 } from '../../styles/typography';
 import Day from '../Day/Day';
-import TaskList from '../TaskList/TaskList';
 import { CalendarWeekProps } from './Calendar.types';
 import {
   CalendarHeader,
-  CalendarWrapper,
+  CalendarWeekWrapper,
   DateBoard,
   DateHead,
 } from './Calendar.styled';
 
-const CalendarWeek: React.FC<CalendarWeekProps> = ({ year, month, date }) => {
-  const navigate = useNavigate();
+const CalendarWeek = forwardRef<HTMLDivElement, CalendarWeekProps>(
+  ({ year, month, date }, ref) => {
+    const navigate = useNavigate();
 
-  const handleGoPrevMonth = () => {
-    if (month === 1) {
-      navigate(`/${year - 1}/12/1`);
-    } else {
-      navigate(`/${year}/${month - 1}/1`);
-    }
-  };
+    const handleGoPrevMonth = () => {
+      if (month === 1) {
+        navigate(`/${year - 1}/12/1`);
+      } else {
+        navigate(`/${year}/${month - 1}/1`);
+      }
+    };
 
-  const handleGoNextvMonth = () => {
-    if (month === 12) {
-      navigate(`/${year + 1}/1/1`);
-    } else {
-      navigate(`/${year}/${month + 1}/1`);
-    }
-  };
+    const handleGoNextvMonth = () => {
+      if (month === 12) {
+        navigate(`/${year + 1}/1/1`);
+      } else {
+        navigate(`/${year}/${month + 1}/1`);
+      }
+    };
 
-  return (
-    <>
-      <CalendarWrapper>
+    return (
+      <CalendarWeekWrapper ref={ref}>
         <CalendarHeader>
           <img
             src={prevIcon}
@@ -82,11 +80,9 @@ const CalendarWeek: React.FC<CalendarWeekProps> = ({ year, month, date }) => {
             ))}
           </DateBoard>
         </div>
-      </CalendarWrapper>
-
-      <TaskList year={year} month={month} date={date} />
-    </>
-  );
-};
+      </CalendarWeekWrapper>
+    );
+  }
+);
 
 export default CalendarWeek;

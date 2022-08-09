@@ -22,13 +22,11 @@ const CalendarTitle: React.FC<CalendarTitleProps> = ({ year, month }) => {
 };
 
 const CalendarTitleWrapper = styled.div`
-  display: flex;
-  gap: 0.8rem;
   align-items: center;
   margin-left: 2.8rem;
 `;
 
-const Month = styled.div`
+const Month = styled.span`
   font-weight: 700;
   font-size: 4rem;
   line-height: 5.2rem;
@@ -36,14 +34,14 @@ const Month = styled.div`
   color: var(--gray-08);
 `;
 
-const MonthYear = styled.div`
+const MonthYear = styled.span`
   font-weight: 700;
   font-size: 1.4rem;
   line-height: 2rem;
   letter-spacing: -0.6px;
   color: var(--gray-04);
 
-  margin-top: 1rem;
+  margin-left: 0.8rem;
 `;
 
 export default CalendarTitle;

@@ -1,5 +1,4 @@
-/** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { format } from 'date-fns';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -8,7 +7,17 @@ import { useNavigate } from 'react-router';
 import moreIcon from '../../assets/more-icon.svg';
 import { taskActions } from '../../store/taskSlice';
 import TaskMoreMenu from '../TaskMoreMenu/TaskMoreMenu';
-import { TaskWrapper } from './Task.styled';
+import {
+  Date,
+  EndDate,
+  Memo,
+  StartDate,
+  TaskMoreIcon,
+  Label,
+  Title,
+  TaskContent,
+  TaskWrapper,
+} from './Task.styled';
 import { taskProps } from './Task.types';
 
 const Task: React.FC<taskProps> = ({ task }) => {
@@ -22,28 +31,25 @@ const Task: React.FC<taskProps> = ({ task }) => {
 
   return (
     <TaskWrapper>
+      <TaskInfoWrapper>
+        <Date>
+          {task.isAllDay && <StartDate>ALL DAY</StartDate>}
+          {!task.isAllDay && (
+            <>
+              <StartDate>{format(task.startDate, 'HH:mm')}</StartDate>
+              <EndDate>{format(task.endDate, 'HH:mm')}</EndDate>
+            </>
+          )}
+        </Date>
+        <Label color={task.label}></Label>
+        <TaskContent onClick={() => navigate(`/edit/${task.id}`)}>
+          <Title>{task.title}</Title>
+          <Memo>{task.memo}</Memo>
+        </TaskContent>
+      </TaskInfoWrapper>
+
       <div>
-        {task.isAllDay && <div>ALL DAY</div>}
-        {!task.isAllDay && (
-          <>
-            <div>{format(task.startDate, 'HH:mm')}</div>
-            <div>{format(task.endDate, 'HH:mm')}</div>
-          </>
-        )}
-      </div>
-      <div
-        css={css`
-          width: 3px;
-          height: 16px;
-          background-color: ${`var(--label-color-${task.label})`};
-        `}
-      ></div>
-      <div onClick={() => navigate(`/edit/${task.id}`)}>
-        <div>{task.title}</div>
-        <div>{task.memo}</div>
-      </div>
-      <div>
-        <img
+        <TaskMoreIcon
           src={moreIcon}
           alt="더보기"
           onClick={() => setShowMore(!showMore)}
@@ -53,5 +59,10 @@ const Task: React.FC<taskProps> = ({ task }) => {
     </TaskWrapper>
   );
 };
+
+const TaskInfoWrapper = styled.div`
+  display: flex;
+  flex-shrink: 1;
+`;
 
 export default Task;

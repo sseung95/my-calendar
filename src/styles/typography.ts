@@ -43,14 +43,14 @@ export const Headline = css`
   letter-spacing: -0.6px;
 `;
 
-export const Subead03 = css`
+export const Subhead03 = css`
   font-weight: 700;
   font-size: 16px;
   line-height: 22px;
   letter-spacing: -0.6px;
 `;
 
-export const Subead02 = css`
+export const Subhead02 = css`
   font-weight: 700;
   font-size: 14px;
   line-height: 20px;
