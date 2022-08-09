@@ -3,7 +3,7 @@ import React from 'react';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import { getDayStr } from '../../utils/dateUtil';
-import addImg from '../../assets/add-button.svg';
+
 import prevIcon from '../../assets/left-icon.svg';
 import nextIcon from '../../assets/right-icon.svg';
 import { Body01 } from '../../styles/typography';
@@ -84,17 +84,7 @@ const CalendarWeek: React.FC<CalendarWeekProps> = ({ year, month, date }) => {
         </div>
       </CalendarWrapper>
 
-      <div>
-        <div>
-          {year}.{month}.{date}
-        </div>
-
-        <TaskList year={year} month={month} date={date} />
-
-        <Link to={`/add/${year}/${month}/${date}`}>
-          <img src={addImg} alt="일정 추가" />
-        </Link>
-      </div>
+      <TaskList year={year} month={month} date={date} />
     </>
   );
 };

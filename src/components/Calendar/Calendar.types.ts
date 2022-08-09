@@ -10,3 +10,8 @@ export type CalendarWeekProps = {
   month: number;
   date: number;
 };
+
+export type CalendarTitleProps = {
+  year: number;
+  month: number;
+};

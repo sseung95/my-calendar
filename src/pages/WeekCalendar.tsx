@@ -1,5 +1,3 @@
-/** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import CalendarWeek from '../components/Calendar/CalendarWeek';
