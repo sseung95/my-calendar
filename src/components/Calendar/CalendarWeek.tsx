@@ -37,7 +37,7 @@ const CalendarWeek = forwardRef<HTMLDivElement, CalendarWeekProps>(
     };
 
     const checkActive = (date: number) => {
-      if (!params.date) return;
+      if (!params.date) return false;
 
       return +params.date === date;
     };
