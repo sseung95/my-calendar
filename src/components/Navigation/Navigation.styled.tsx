@@ -11,6 +11,6 @@ export const Ul = styled.ul`
 
   li > a {
     display: block;
-    padding: 20px;
+    padding: 2rem;
   }
 `;

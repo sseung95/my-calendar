@@ -1,6 +1,6 @@
-import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
 import { getMonthStr } from '../../utils/dateUtil';
+import { CalendarTitleWrapper, Month, MonthYear } from './Calendar.styled';
 import { CalendarTitleProps } from './Calendar.types';
 
 const CalendarTitle: React.FC<CalendarTitleProps> = ({ year, month }) => {
@@ -20,28 +20,5 @@ const CalendarTitle: React.FC<CalendarTitleProps> = ({ year, month }) => {
     </CalendarTitleWrapper>
   );
 };
-
-const CalendarTitleWrapper = styled.div`
-  align-items: center;
-  margin-left: 2.8rem;
-`;
-
-const Month = styled.span`
-  font-weight: 700;
-  font-size: 4rem;
-  line-height: 5.2rem;
-  letter-spacing: -0.6px;
-  color: var(--gray-08);
-`;
-
-const MonthYear = styled.span`
-  font-weight: 700;
-  font-size: 1.4rem;
-  line-height: 2rem;
-  letter-spacing: -0.6px;
-  color: var(--gray-04);
-
-  margin-left: 0.8rem;
-`;
 
 export default CalendarTitle;

@@ -34,3 +34,8 @@ export const AddButtonWrapper = styled.div`
   bottom: 2rem;
   right: 4rem;
 `;
+
+export const AddButton = styled.img`
+  border-radius: 100px;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+`;

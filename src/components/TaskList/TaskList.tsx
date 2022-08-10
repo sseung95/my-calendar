@@ -5,6 +5,7 @@ import Task from '../Task/Task';
 import { TaskListProps } from './TaskList.types';
 import addImg from '../../assets/add-button.svg';
 import {
+  AddButton,
   AddButtonWrapper,
   DateWrapper,
   TaskListViewWrapper,
@@ -49,7 +50,7 @@ const TaskList = forwardRef<HTMLDivElement, TaskListProps>(
 
             <AddButtonWrapper>
               <Link to={`/add/${year}/${month}/${date}`}>
-                <img src={addImg} alt="일정 추가" />
+                <AddButton src={addImg} alt="일정 추가" />
               </Link>
             </AddButtonWrapper>
           </TaskListWrapper>

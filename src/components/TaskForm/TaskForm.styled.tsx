@@ -4,7 +4,7 @@ import { Body01, Display02, Headline } from '../../styles/typography';
 export const TaskFormWrapper = styled.div`
   flex-grow: 1;
   background-color: #fff;
-  border-radius: 3.2rem 3.2rem 0px 0px;
+  border-radius: 3.2rem 3.2rem 0 0;
   padding: 2rem;
 `;
 
