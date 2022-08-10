@@ -3,7 +3,12 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { RootState } from '../../store';
 import Label from '../Label/Label';
-import { DateStyle, DayWrapper, LabelListWrapper } from './Day.styled';
+import {
+  DateStyle,
+  DayWrapper,
+  LabelListWrapper,
+  MoreTaskLen,
+} from './Day.styled';
 import { DayProps } from './Day.types';
 
 const Day: React.FC<DayProps> = ({ year, month, date, idx }) => {
@@ -14,7 +19,9 @@ const Day: React.FC<DayProps> = ({ year, month, date, idx }) => {
       task.startDate.getMonth() + 1 === month
   );
   const lastDay = new Date(year, month, 0).getDate(); // 현재 월의 마지막 날 구하기
-  const dayRef = useRef<HTMLInputElement>(null);
+  const filterdTaskList = taskList.filter(
+    (task) => task.startDate.getDate() === date + idx
+  );
 
   const isToday = (targetDate: number) => {
     const today = new Date();
@@ -33,11 +40,7 @@ const Day: React.FC<DayProps> = ({ year, month, date, idx }) => {
   };
 
   return (
-    <DayWrapper
-      id={`date-${idx + 1}`}
-      onClick={handleGoWeekThatDate}
-      ref={dayRef}
-    >
+    <DayWrapper id={`date-${idx + 1}`} onClick={handleGoWeekThatDate}>
       <DateStyle
         isToday={isToday(idx + date)}
         day={new Date(`${year}/${month}/${idx + date}`).getDay()}
@@ -46,9 +49,8 @@ const Day: React.FC<DayProps> = ({ year, month, date, idx }) => {
       </DateStyle>
 
       <LabelListWrapper>
-        {taskList
-          .filter((task) => task.startDate.getDate() === date + idx)
-          .map((task) => (
+        {filterdTaskList.length <= 4 &&
+          filterdTaskList.map((task) => (
             <Label
               key={task.id}
               id={task.id}
@@ -56,6 +58,24 @@ const Day: React.FC<DayProps> = ({ year, month, date, idx }) => {
               labelColor={task.label}
             />
           ))}
+
+        {filterdTaskList.length > 4 &&
+          filterdTaskList.map((task, idx) =>
+            idx < 3 ? (
+              <Label
+                key={task.id}
+                id={task.id}
+                title={task.title}
+                labelColor={task.label}
+              />
+            ) : idx === 4 ? (
+              <MoreTaskLen key={task.id}>
+                + {filterdTaskList.length - 3}
+              </MoreTaskLen>
+            ) : (
+              ''
+            )
+          )}
       </LabelListWrapper>
     </DayWrapper>
   );

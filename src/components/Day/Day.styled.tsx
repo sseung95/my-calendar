@@ -45,3 +45,8 @@ export const LabelListWrapper = styled.div`
   flex-direction: column;
   gap: 0.1rem;
 `;
+
+export const MoreTaskLen = styled.div`
+  ${Caption02}
+  color: var(--gray-08);
+`;
