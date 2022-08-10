@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import { useNavigate } from 'react-router';
 import { getDayStr } from '../../utils/dateUtil';
 
@@ -68,7 +68,7 @@ const CalendarWeek = forwardRef<HTMLDivElement, CalendarWeekProps>(
               );
             })}
           </DateHead>
-          <DateBoard>
+          <DateBoard css={{ height: '8rem' }}>
             {[...Array(7)].map((n, idx) => (
               <Day
                 key={idx}

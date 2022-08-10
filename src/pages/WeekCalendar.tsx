@@ -20,27 +20,23 @@ const WeekCalendar = () => {
     if (params.date) setDate(+params.date);
   }, [params]);
 
-  const resetHeight = () => {
-    if (taskListRef.current && calRef.current && wrapperRef.current) {
-      // 전체 main 높이 - Week 캘린더 높이 - 날짜 높이 - 날짜 marginBottom - TaskList Padding Top&Bottom
-      taskListRef.current.setAttribute(
-        'style',
-        `height: ${
-          wrapperRef.current.clientHeight -
-          calRef.current.clientHeight -
-          22 -
-          15 -
-          20 -
-          10
-        }px; `
-      );
+  useEffect(() => {
+    resetSize();
+    window.addEventListener('resize', resetSize);
+
+    return () => {
+      window.removeEventListener('resize', resetSize);
+    };
+  }, []);
+
+  const resetSize = () => {
+    if (wrapperRef.current && calRef.current && taskListRef.current) {
+      // 전체 높이 - 캘린더 높이 - bottom padding(20)
+      const h =
+        wrapperRef.current.offsetHeight - calRef.current.offsetHeight - 20;
+      taskListRef.current.setAttribute('style', `height: ${h}px`);
     }
   };
-
-  useEffect(() => {
-    resetHeight();
-    window.addEventListener('resize', resetHeight);
-  }, [calRef.current?.clientHeight]);
 
   return (
     <WeekCalendarWrapper ref={wrapperRef}>
@@ -52,6 +48,8 @@ const WeekCalendar = () => {
 
 const WeekCalendarWrapper = styled.div`
   height: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
 export default WeekCalendar;

@@ -16,6 +16,10 @@ export const DateWrapper = styled.div`
   margin-bottom: 1.5rem;
 `;
 
+export const TaskListViewWrapper = styled.div`
+  overflow: auto;
+`;
+
 export const TaskListWrapper = styled.div`
   overflow: auto;
   padding-bottom: 4rem;
