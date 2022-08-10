@@ -5,12 +5,14 @@ import Task from '../Task/Task';
 import { TaskListProps } from './TaskList.types';
 import addImg from '../../assets/add-button.svg';
 import {
+  AddButton,
   AddButtonWrapper,
   DateWrapper,
+  TaskListViewWrapper,
   TaskListWrapper,
   Wrapper,
 } from './TaskList.styled';
-import { forwardRef } from 'react';
+import { forwardRef, useEffect, useRef } from 'react';
 
 const TaskList = forwardRef<HTMLDivElement, TaskListProps>(
   ({ year, month, date }, ref) => {
@@ -20,25 +22,39 @@ const TaskList = forwardRef<HTMLDivElement, TaskListProps>(
         task.startDate.getMonth() + 1 === month
     );
 
+    const dateRef = useRef<HTMLDivElement>(null);
+    const viewRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+      if (dateRef.current && viewRef.current) {
+        viewRef.current.setAttribute(
+          'style',
+          `height: calc(100% - ${dateRef.current.scrollHeight}px)`
+        );
+      }
+    }, []);
+
     return (
-      <Wrapper>
-        <DateWrapper>
+      <Wrapper ref={ref}>
+        <DateWrapper ref={dateRef}>
           {year}.{month}.{date}
         </DateWrapper>
 
-        <TaskListWrapper ref={ref}>
-          {taskList
-            .filter((task) => task.startDate.getDate() === date)
-            .map((task) => (
-              <Task key={task.id} task={task} />
-            ))}
+        <TaskListViewWrapper ref={viewRef}>
+          <TaskListWrapper>
+            {taskList
+              .filter((task) => task.startDate.getDate() === date)
+              .map((task) => (
+                <Task key={task.id} task={task} />
+              ))}
 
-          <AddButtonWrapper>
-            <Link to={`/add/${year}/${month}/${date}`}>
-              <img src={addImg} alt="일정 추가" />
-            </Link>
-          </AddButtonWrapper>
-        </TaskListWrapper>
+            <AddButtonWrapper>
+              <Link to={`/add/${year}/${month}/${date}`}>
+                <AddButton src={addImg} alt="일정 추가" />
+              </Link>
+            </AddButtonWrapper>
+          </TaskListWrapper>
+        </TaskListViewWrapper>
       </Wrapper>
     );
   }

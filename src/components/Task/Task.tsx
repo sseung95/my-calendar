@@ -1,4 +1,3 @@
-import styled from '@emotion/styled';
 import { format } from 'date-fns';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -17,6 +16,7 @@ import {
   Title,
   TaskContent,
   TaskWrapper,
+  TaskInfoWrapper,
 } from './Task.styled';
 import { taskProps } from './Task.types';
 
@@ -60,10 +60,5 @@ const Task: React.FC<taskProps> = ({ task }) => {
     </TaskWrapper>
   );
 };
-
-const TaskInfoWrapper = styled.div`
-  display: flex;
-  flex-shrink: 1;
-`;
 
 export default Task;

@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
-import React, { forwardRef } from 'react';
-import { useNavigate } from 'react-router';
+import { forwardRef, useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router';
 import { getDayStr } from '../../utils/dateUtil';
 
 import prevIcon from '../../assets/left-icon.svg';
@@ -18,6 +18,7 @@ import {
 const CalendarWeek = forwardRef<HTMLDivElement, CalendarWeekProps>(
   ({ year, month, date }, ref) => {
     const navigate = useNavigate();
+    const params = useParams();
 
     const handleGoPrevMonth = () => {
       if (month === 1) {
@@ -33,6 +34,12 @@ const CalendarWeek = forwardRef<HTMLDivElement, CalendarWeekProps>(
       } else {
         navigate(`/${year}/${month + 1}/1`);
       }
+    };
+
+    const checkActive = (date: number) => {
+      if (!params.date) return;
+
+      return +params.date === date;
     };
 
     return (
@@ -68,7 +75,7 @@ const CalendarWeek = forwardRef<HTMLDivElement, CalendarWeekProps>(
               );
             })}
           </DateHead>
-          <DateBoard>
+          <DateBoard css={{ height: '8rem' }}>
             {[...Array(7)].map((n, idx) => (
               <Day
                 key={idx}
@@ -76,6 +83,7 @@ const CalendarWeek = forwardRef<HTMLDivElement, CalendarWeekProps>(
                 month={month}
                 date={date - 3}
                 idx={idx}
+                isActive={checkActive(date - 3 + idx)}
               />
             ))}
           </DateBoard>

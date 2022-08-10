@@ -3,4 +3,5 @@ export type DayProps = {
   month: number;
   date: number;
   idx: number;
+  isActive: boolean | undefined;
 };

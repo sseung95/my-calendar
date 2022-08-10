@@ -33,8 +33,8 @@ export const TaskContent = styled.div`
 `;
 
 export const Label = styled.div`
-  width: 3px;
-  height: 16px;
+  width: 0.3rem;
+  height: 1.6rem;
   background-color: ${(props) => `var(--label-color-${props.color})`};
   border-radius: 1px;
   margin-top: 1px;
@@ -52,14 +52,11 @@ export const Memo = styled.p`
   color: var(--gray-06);
 `;
 
-export const TaskMore = styled.div``;
+export const TaskInfoWrapper = styled.div`
+  display: flex;
+  flex-shrink: 1;
+`;
 
 export const TaskMoreIcon = styled.img`
   cursor: pointer;
 `;
-
-// export const TaskMoreWrapper = styled.div`
-//   position: absolute;
-//   top: 0;
-//   right: 0;
-// `;

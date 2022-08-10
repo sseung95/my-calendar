@@ -16,6 +16,10 @@ export const DateWrapper = styled.div`
   margin-bottom: 1.5rem;
 `;
 
+export const TaskListViewWrapper = styled.div`
+  overflow: auto;
+`;
+
 export const TaskListWrapper = styled.div`
   overflow: auto;
   padding-bottom: 4rem;
@@ -29,4 +33,9 @@ export const AddButtonWrapper = styled.div`
   position: absolute;
   bottom: 2rem;
   right: 4rem;
+`;
+
+export const AddButton = styled.img`
+  border-radius: 100px;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 `;
