@@ -1,6 +1,6 @@
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { RootState } from '../../store';
 import Label from '../Label/Label';
 import {
@@ -11,7 +11,7 @@ import {
 } from './Day.styled';
 import { DayProps } from './Day.types';
 
-const Day: React.FC<DayProps> = ({ year, month, date, idx }) => {
+const Day: React.FC<DayProps> = ({ year, month, date, idx, isActive }) => {
   const navigate = useNavigate();
   const taskList = useSelector((state: RootState) => state.task.items).filter(
     (task) =>
@@ -40,7 +40,11 @@ const Day: React.FC<DayProps> = ({ year, month, date, idx }) => {
   };
 
   return (
-    <DayWrapper id={`date-${idx + 1}`} onClick={handleGoWeekThatDate}>
+    <DayWrapper
+      id={`date-${idx + 1}`}
+      onClick={handleGoWeekThatDate}
+      isActive={isActive}
+    >
       <DateStyle
         isToday={isToday(idx + date)}
         day={new Date(`${year}/${month}/${idx + date}`).getDay()}

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Caption02 } from '../../styles/typography';
 
-export const DayWrapper = styled.div`
+export const DayWrapper = styled.div<{ isActive: boolean }>`
   padding: 0.1rem;
   cursor: pointer;
 
@@ -11,9 +11,16 @@ export const DayWrapper = styled.div`
 
   overflow: hidden;
 
-  &:hover {
-    background-color: #fafafa;
-    border-radius: 4px;
+  ${(props) =>
+    props.isActive &&
+    `background-color: #f3f3f3;
+      border-radius: 4px;`}
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: #fafafa;
+      border-radius: 4px;
+    }
   }
 `;
 
