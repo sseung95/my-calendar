@@ -64,7 +64,9 @@ const EditTaskForm = () => {
 
   const handleAddTask = () => {
     if (isInvalid) {
-      alert('시작 날짜는 종료 날짜 이전이어야 합니다.');
+      alert(
+        '시작 날짜는 종료 날짜 이전이거나, 종료 날짜는 시작 날짜와 같아야 합니다.'
+      );
       return;
     }
 

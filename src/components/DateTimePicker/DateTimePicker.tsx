@@ -25,6 +25,10 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
     } else {
       setIsInvalidEndDate(false);
     }
+
+    if (startDate.getDate() < endDate.getDate()) {
+      setIsInvalidEndDate(true);
+    }
   };
 
   useEffect(() => {
