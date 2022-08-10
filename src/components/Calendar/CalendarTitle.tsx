@@ -7,7 +7,7 @@ const CalendarTitle: React.FC<CalendarTitleProps> = ({ year, month }) => {
   const [monthStr, setMonthStr] = useState(getMonthStr());
 
   useEffect(() => {
-    const changedMonthStr = getMonthStr(new Date(`${year}/${month}`));
+    const changedMonthStr = getMonthStr(new Date(year, month, 0));
     setMonthStr(changedMonthStr);
   }, [month]);
 
