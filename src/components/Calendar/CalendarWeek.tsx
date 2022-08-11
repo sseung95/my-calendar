@@ -1,17 +1,14 @@
-/** @jsxImportSource @emotion/react */
-import { forwardRef, useEffect, useState } from 'react';
+import { forwardRef } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { getDayStr } from '../../utils/dateUtil';
 
 import prevIcon from '../../assets/left-icon.svg';
 import nextIcon from '../../assets/right-icon.svg';
-import { Body01 } from '../../styles/typography';
 import Day from '../Day/Day';
 import { CalendarWeekProps } from './Calendar.types';
 import {
   CalendarHeader,
   CalendarWeekWrapper,
-  DateBoard,
   DateHead,
   WeekDateBoard,
 } from './Calendar.styled';
@@ -46,19 +43,11 @@ const CalendarWeek = forwardRef<HTMLDivElement, CalendarWeekProps>(
     return (
       <CalendarWeekWrapper ref={ref}>
         <CalendarHeader>
-          <img
-            src={prevIcon}
-            onClick={handleGoPrevMonth}
-            css={{ cursor: 'pointer' }}
-          />
+          <img src={prevIcon} onClick={handleGoPrevMonth} />
           <div>
             {year}.{month.toString().padStart(2, '0')}
           </div>
-          <img
-            src={nextIcon}
-            onClick={handleGoNextvMonth}
-            css={{ cursor: 'pointer' }}
-          />
+          <img src={nextIcon} onClick={handleGoNextvMonth} />
         </CalendarHeader>
         <div>
           <DateHead>

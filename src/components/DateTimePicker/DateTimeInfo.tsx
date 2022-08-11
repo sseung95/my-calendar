@@ -1,5 +1,3 @@
-/** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
 import { forwardRef } from 'react';
 import {
   DateTimeInfoWrapper,
@@ -14,20 +12,8 @@ const DateTimeInfo: React.FC<any> = forwardRef(
     const time = value.split('/')[1];
 
     return (
-      <DateTimeInfoWrapper
-        onClick={onClick}
-        ref={ref}
-        css={css`
-          ${isInvalid && 'text-decoration: line-through;'}
-        `}
-      >
-        <DateTitle
-          css={css`
-            ${isAllDay && 'font-weight: 700;'}
-          `}
-        >
-          {date}
-        </DateTitle>
+      <DateTimeInfoWrapper onClick={onClick} ref={ref} isInvalid={isInvalid}>
+        <DateTitle isAllDay={isAllDay}>{date}</DateTitle>
         {!isAllDay && <TimeTitle>{time}</TimeTitle>}
       </DateTimeInfoWrapper>
     );

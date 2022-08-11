@@ -34,8 +34,11 @@ export const CalendarHeader = styled.div`
   padding: 0 1.6rem;
   padding-bottom: 2.1rem;
   color: var(--gray-08);
-
   ${Body01}
+
+  img {
+    cursor: pointer;
+  }
 
   @media (min-width: 768px) {
     ${Display01}
