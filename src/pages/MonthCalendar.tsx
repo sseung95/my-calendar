@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import styled from '@emotion/styled';
 import { useState } from 'react';
 import Calendar from '../components/Calendar/Calendar';

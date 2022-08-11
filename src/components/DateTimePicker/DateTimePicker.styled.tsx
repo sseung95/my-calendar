@@ -19,14 +19,17 @@ export const DateTimePickerWrapper = styled.div`
   }
 `;
 
-export const DateTimeInfoWrapper = styled.div`
+export const DateTimeInfoWrapper = styled.div<{ isInvalid: boolean }>`
   text-align: center;
   cursor: pointer;
+
+  ${(props) => props.isInvalid && 'text-decoration: line-through;'}
 `;
 
-export const DateTitle = styled.div`
+export const DateTitle = styled.div<{ isAllDay: boolean }>`
   ${Body01}
   color: var(--gray-08);
+  ${(props) => props.isAllDay && 'font-weight: 700;'}
 
   @media (min-width: 768px) {
     font-size: 2rem;

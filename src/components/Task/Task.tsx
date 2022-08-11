@@ -1,3 +1,4 @@
+/** @jsxImportSource @emotion/react */
 import { format } from 'date-fns';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -48,7 +49,7 @@ const Task: React.FC<taskProps> = ({ task }) => {
         </TaskContent>
       </TaskInfoWrapper>
 
-      <div style={{ position: 'relative' }}>
+      <div css={{ position: 'relative' }}>
         <TaskMoreIcon
           src={moreIcon}
           alt="더보기"

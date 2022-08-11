@@ -1,15 +1,7 @@
-/** @jsxImportSource @emotion/react */
 import React from 'react';
 import Day from '../Day/Day';
 import prevIcon from '../../assets/left-icon.svg';
 import nextIcon from '../../assets/right-icon.svg';
-import {
-  Body01,
-  Display01,
-  Display05,
-  Headline,
-} from '../../styles/typography';
-import { Pointer } from '../../styles/unit';
 import {
   CalendarContent,
   CalendarHeader,
@@ -18,7 +10,6 @@ import {
   DateHead,
 } from './Calendar.styled';
 import { CalendarProps } from './Calendar.types';
-import { css } from '@emotion/react';
 
 const Calendar: React.FC<CalendarProps> = ({
   year,
@@ -50,11 +41,11 @@ const Calendar: React.FC<CalendarProps> = ({
   return (
     <CalendarWrapper>
       <CalendarHeader>
-        <img src={prevIcon} onClick={handleGoPrevMonth} css={Pointer} />
+        <img src={prevIcon} onClick={handleGoPrevMonth} />
         <div>
           {year}.{month.toString().padStart(2, '0')}
         </div>
-        <img src={nextIcon} onClick={handleGoNextvMonth} css={Pointer} />
+        <img src={nextIcon} onClick={handleGoNextvMonth} />
       </CalendarHeader>
       <CalendarContent>
         <DateHead>

@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router';
 import { RootState } from '../../store';
@@ -13,11 +12,19 @@ import { DayProps } from './Day.types';
 
 const Day: React.FC<DayProps> = ({ year, month, date, idx, isActive }) => {
   const navigate = useNavigate();
-  const taskList = useSelector((state: RootState) => state.task.items).filter(
-    (task) =>
-      task.startDate.getFullYear() === year &&
-      task.startDate.getMonth() + 1 === month
-  );
+  const taskList = useSelector((state: RootState) => state.taskSlice.items)
+    .map((task) => {
+      return {
+        ...task,
+        startDate: new Date(task.startDate),
+        endDate: new Date(task.endDate),
+      };
+    })
+    .filter(
+      (task) =>
+        task.startDate.getFullYear() === year &&
+        task.startDate.getMonth() + 1 === month
+    );
   const lastDay = new Date(year, month, 0).getDate(); // 현재 월의 마지막 날 구하기
   const filterdTaskList = taskList.filter(
     (task) => task.startDate.getDate() === date + idx
