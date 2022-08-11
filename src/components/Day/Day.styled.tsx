@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Caption02 } from '../../styles/typography';
+import { Body01, Caption02 } from '../../styles/typography';
 
 export const DayWrapper = styled.div<{ isActive: boolean }>`
   padding: 0.1rem;
@@ -21,6 +21,10 @@ export const DayWrapper = styled.div<{ isActive: boolean }>`
       background-color: #fafafa;
       border-radius: 4px;
     }
+  }
+
+  @media (min-width: 768px) {
+    padding: 0.3rem;
   }
 `;
 
@@ -45,6 +49,15 @@ export const DateStyle = styled.div<{ isToday: boolean; day: number }>`
     background-color: var(--gray-08);
     border-radius: 100px;
   `}
+
+  @media (min-width: 768px) {
+    ${Body01}
+    width: 2rem;
+    height: 2rem;
+    line-height: 2.2rem;
+
+    margin-bottom: 1rem;
+  }
 `;
 
 export const LabelListWrapper = styled.div`
@@ -56,4 +69,8 @@ export const LabelListWrapper = styled.div`
 export const MoreTaskLen = styled.div`
   ${Caption02}
   color: var(--gray-08);
+
+  @media (min-width: 768px) {
+    ${Body01}
+  }
 `;

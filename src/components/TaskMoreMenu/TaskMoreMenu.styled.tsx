@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Caption02 } from '../../styles/typography';
+import { Body02, Caption02 } from '../../styles/typography';
 
 export const TaskMoreMenuWrapper = styled.div`
   position: absolute;
@@ -15,4 +15,11 @@ export const TaskMoreMenuWrapper = styled.div`
   color: var(--gray-08);
   cursor: pointer;
   ${Caption02}
+
+  @media (min-width: 768px) {
+    ${Body02}
+    padding: 0.8rem 0;
+    width: 8rem;
+    top: 2.3rem;
+  }
 `;

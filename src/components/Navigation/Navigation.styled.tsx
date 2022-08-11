@@ -13,4 +13,7 @@ export const Ul = styled.ul`
     display: block;
     padding: 2rem;
   }
+
+  @media (min-width: 768px) {
+  }
 `;

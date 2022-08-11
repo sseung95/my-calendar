@@ -5,7 +5,7 @@ import {
   DateTimeInfoWrapper,
   DateTitle,
   TimeTitle,
-} from '../TaskForm/TaskForm.styled';
+} from './DateTimePicker.styled';
 
 // TODO: type any 를 어떤 타입으로 변경해야되는지 고민해보기
 const DateTimeInfo: React.FC<any> = forwardRef(

@@ -3,15 +3,22 @@ import React from 'react';
 import Day from '../Day/Day';
 import prevIcon from '../../assets/left-icon.svg';
 import nextIcon from '../../assets/right-icon.svg';
-import { Body01 } from '../../styles/typography';
+import {
+  Body01,
+  Display01,
+  Display05,
+  Headline,
+} from '../../styles/typography';
 import { Pointer } from '../../styles/unit';
 import {
+  CalendarContent,
   CalendarHeader,
   CalendarWrapper,
   DateBoard,
   DateHead,
 } from './Calendar.styled';
 import { CalendarProps } from './Calendar.types';
+import { css } from '@emotion/react';
 
 const Calendar: React.FC<CalendarProps> = ({
   year,
@@ -44,12 +51,12 @@ const Calendar: React.FC<CalendarProps> = ({
     <CalendarWrapper>
       <CalendarHeader>
         <img src={prevIcon} onClick={handleGoPrevMonth} css={Pointer} />
-        <div css={Body01}>
+        <div>
           {year}.{month.toString().padStart(2, '0')}
         </div>
         <img src={nextIcon} onClick={handleGoNextvMonth} css={Pointer} />
       </CalendarHeader>
-      <div css={{ flexGrow: 1 }}>
+      <CalendarContent>
         <DateHead>
           <div>MON</div>
           <div>TUE</div>
@@ -65,10 +72,17 @@ const Calendar: React.FC<CalendarProps> = ({
           ))}
 
           {[...Array(lastDay)].map((n, idx) => (
-            <Day key={idx} year={year} month={month} date={1} idx={idx} />
+            <Day
+              key={idx}
+              year={year}
+              month={month}
+              date={1}
+              idx={idx}
+              isActive={false}
+            />
           ))}
         </DateBoard>
-      </div>
+      </CalendarContent>
     </CalendarWrapper>
   );
 };

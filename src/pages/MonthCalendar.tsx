@@ -1,6 +1,9 @@
+/** @jsxImportSource @emotion/react */
+import styled from '@emotion/styled';
 import { useState } from 'react';
 import Calendar from '../components/Calendar/Calendar';
 import CalendarTitle from '../components/Calendar/CalendarTitle';
+import TodayButton from '../components/TodayButton/TodayButton';
 import { getYear, getMonth } from '../utils/dateUtil';
 
 const MonthCalendar = () => {
@@ -9,7 +12,10 @@ const MonthCalendar = () => {
 
   return (
     <>
-      <CalendarTitle year={year} month={month} />
+      <HeaderWrapper>
+        <CalendarTitle year={year} month={month} />
+        <TodayButton setYear={setYear} setMonth={setMonth} />
+      </HeaderWrapper>
       <Calendar
         year={year}
         month={month}
@@ -19,5 +25,12 @@ const MonthCalendar = () => {
     </>
   );
 };
+
+const HeaderWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2.8rem;
+`;
 
 export default MonthCalendar;
