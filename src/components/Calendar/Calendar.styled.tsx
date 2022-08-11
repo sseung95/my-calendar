@@ -51,8 +51,8 @@ export const DateBoard = styled.div`
 `;
 
 export const CalendarTitleWrapper = styled.div`
-  align-items: center;
-  margin-left: 2.8rem;
+  /* align-items: center;
+  margin-left: 2.8rem; */
 `;
 
 export const Month = styled.span`
