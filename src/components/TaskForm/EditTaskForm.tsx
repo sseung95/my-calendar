@@ -39,7 +39,15 @@ const EditTaskForm = () => {
   const navigate = useNavigate();
   const params = useParams();
 
-  const taskList = useSelector((state: RootState) => state.task.items);
+  const taskList = useSelector((state: RootState) => state.taskSlice.items).map(
+    (task) => {
+      return {
+        ...task,
+        startDate: new Date(task.startDate),
+        endDate: new Date(task.endDate),
+      };
+    }
+  );
 
   useEffect(() => {
     const taskId = params.taskId;

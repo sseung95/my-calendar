@@ -16,11 +16,19 @@ import { forwardRef, useEffect, useRef } from 'react';
 
 const TaskList = forwardRef<HTMLDivElement, TaskListProps>(
   ({ year, month, date }, ref) => {
-    const taskList = useSelector((state: RootState) => state.task.items).filter(
-      (task) =>
-        task.startDate.getFullYear() === year &&
-        task.startDate.getMonth() + 1 === month
-    );
+    const taskList = useSelector((state: RootState) => state.taskSlice.items)
+      .map((task) => {
+        return {
+          ...task,
+          startDate: new Date(task.startDate),
+          endDate: new Date(task.endDate),
+        };
+      })
+      .filter(
+        (task) =>
+          task.startDate.getFullYear() === year &&
+          task.startDate.getMonth() + 1 === month
+      );
 
     const dateRef = useRef<HTMLDivElement>(null);
     const viewRef = useRef<HTMLDivElement>(null);
