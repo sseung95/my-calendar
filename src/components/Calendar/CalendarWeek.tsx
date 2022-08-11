@@ -13,6 +13,7 @@ import {
   CalendarWeekWrapper,
   DateBoard,
   DateHead,
+  WeekDateBoard,
 } from './Calendar.styled';
 
 const CalendarWeek = forwardRef<HTMLDivElement, CalendarWeekProps>(
@@ -50,7 +51,7 @@ const CalendarWeek = forwardRef<HTMLDivElement, CalendarWeekProps>(
             onClick={handleGoPrevMonth}
             css={{ cursor: 'pointer' }}
           />
-          <div css={Body01}>
+          <div>
             {year}.{month.toString().padStart(2, '0')}
           </div>
           <img
@@ -75,7 +76,7 @@ const CalendarWeek = forwardRef<HTMLDivElement, CalendarWeekProps>(
               );
             })}
           </DateHead>
-          <DateBoard css={{ height: '8rem' }}>
+          <WeekDateBoard>
             {[...Array(7)].map((n, idx) => (
               <Day
                 key={idx}
@@ -86,7 +87,7 @@ const CalendarWeek = forwardRef<HTMLDivElement, CalendarWeekProps>(
                 isActive={checkActive(date - 3 + idx)}
               />
             ))}
-          </DateBoard>
+          </WeekDateBoard>
         </div>
       </CalendarWeekWrapper>
     );

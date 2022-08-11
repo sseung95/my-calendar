@@ -22,6 +22,16 @@ export const ToggleLabel = styled.label`
     background: #fff;
     transition: all 0.2s ease-in;
   }
+
+  @media (min-width: 768px) {
+    width: 6rem;
+    height: 3rem;
+
+    .toggleButton {
+      width: 2.2rem;
+      height: 2.2rem;
+    }
+  }
 `;
 
 export const Active = css`
@@ -30,5 +40,11 @@ export const Active = css`
   .toggleButton {
     left: calc(100% - 2rem);
     background: #fff;
+  }
+
+  @media (min-width: 768px) {
+    .toggleButton {
+      left: calc(100% - 2.6rem);
+    }
   }
 `;

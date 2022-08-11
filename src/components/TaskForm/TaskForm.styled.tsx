@@ -1,11 +1,15 @@
 import styled from '@emotion/styled';
-import { Body01, Display02, Headline } from '../../styles/typography';
+import { Body01, Display02, Display05 } from '../../styles/typography';
 
 export const TaskFormWrapper = styled.div`
   flex-grow: 1;
   background-color: #fff;
   border-radius: 3.2rem 3.2rem 0 0;
   padding: 2rem;
+
+  @media (min-width: 768px) {
+    padding: 4rem 6rem;
+  }
 `;
 
 export const ButtonWrapper = styled.div`
@@ -15,6 +19,15 @@ export const ButtonWrapper = styled.div`
 
   img {
     cursor: pointer;
+  }
+
+  @media (min-width: 768px) {
+    margin-bottom: 4rem;
+
+    img {
+      width: 3rem;
+      height: 3rem;
+    }
   }
 `;
 
@@ -27,12 +40,28 @@ export const TaskFormRow = styled.div`
   & > *:last-child {
     flex-grow: 1;
   }
+
+  @media (min-width: 768px) {
+    gap: 6rem;
+    padding: 3rem 1.5rem;
+
+    img {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
 `;
 
 export const SubTitle = styled.span`
   ${Body01}
   color: var(--gray-08);
   margin-bottom: 1.5rem;
+
+  @media (min-width: 768px) {
+    font-size: 2rem;
+    line-height: 2.8rem;
+    margin-bottom: 2.5rem;
+  }
 `;
 
 export const ColumnWrapper = styled.div`
@@ -50,6 +79,10 @@ export const TitleInput = styled.input`
   &::placeholder {
     color: var(--gray-05);
   }
+
+  @media (min-width: 768px) {
+    ${Display05}
+  }
 `;
 
 export const SubTitleInput = styled.input`
@@ -61,18 +94,9 @@ export const SubTitleInput = styled.input`
   &::placeholder {
     color: var(--gray-05);
   }
-`;
 
-export const DateTimeInfoWrapper = styled.div`
-  text-align: center;
-  cursor: pointer;
-`;
-
-export const DateTitle = styled.div`
-  ${Body01}
-  color: var(--gray-08);
-`;
-
-export const TimeTitle = styled.div`
-  ${Headline}
+  @media (min-width: 768px) {
+    font-size: 2rem;
+    line-height: 2.8rem;
+  }
 `;

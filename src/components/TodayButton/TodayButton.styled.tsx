@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Body01 } from '../../styles/typography';
+import { Body01, Headline } from '../../styles/typography';
 
 export const OutlineButton = styled.button`
   ${Body01}
@@ -18,5 +18,10 @@ export const OutlineButton = styled.button`
       color: #fff;
       background-color: var(--primary-orange-light);
     }
+  }
+
+  @media (min-width: 768px) {
+    ${Headline}
+    font-weight: 400;
   }
 `;

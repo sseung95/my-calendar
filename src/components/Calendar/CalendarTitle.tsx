@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getMonthStr } from '../../utils/dateUtil';
-import { CalendarTitleWrapper, Month, MonthYear } from './Calendar.styled';
+import { Month, MonthYear } from './Calendar.styled';
 import { CalendarTitleProps } from './Calendar.types';
 
 const CalendarTitle: React.FC<CalendarTitleProps> = ({ year, month }) => {
@@ -12,12 +12,12 @@ const CalendarTitle: React.FC<CalendarTitleProps> = ({ year, month }) => {
   }, [month]);
 
   return (
-    <CalendarTitleWrapper>
+    <div>
       <Month>{month.toString().padStart(2, '0')}</Month>
       <MonthYear>
         {monthStr} {year}
       </MonthYear>
-    </CalendarTitleWrapper>
+    </div>
   );
 };
 

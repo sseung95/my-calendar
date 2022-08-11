@@ -7,6 +7,7 @@ import rightIcon from '../../assets/right-icon-black.svg';
 
 import DateTimeInfo from './DateTimeInfo';
 import { DateTimePickerProps } from './DateTimePicker.types';
+import { DateTimePickerWrapper } from './DateTimePicker.styled';
 
 const DateTimePicker: React.FC<DateTimePickerProps> = ({
   isAllDay,
@@ -58,7 +59,7 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
   };
 
   return (
-    <div style={{ display: 'flex', gap: '.6rem' }}>
+    <DateTimePickerWrapper>
       <div>
         <DatePicker
           selected={startDate}
@@ -84,7 +85,7 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({
           }
         />
       </div>
-    </div>
+    </DateTimePickerWrapper>
   );
 };
 

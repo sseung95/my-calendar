@@ -1,4 +1,12 @@
 import styled from '@emotion/styled';
+import {
+  Body01,
+  Body02,
+  Display01,
+  Display05,
+  Headline,
+  Subhead02,
+} from '../../styles/typography';
 
 export const CalendarWrapper = styled.div`
   background-color: #fff;
@@ -26,6 +34,23 @@ export const CalendarHeader = styled.div`
   padding: 0 1.6rem;
   padding-bottom: 2.1rem;
   color: var(--gray-08);
+
+  ${Body01}
+
+  @media (min-width: 768px) {
+    ${Display01}
+    padding: 0 3.2rem;
+    padding-bottom: 4rem;
+
+    img {
+      width: 3rem;
+      height: 3rem;
+    }
+  }
+`;
+
+export const CalendarContent = styled.div`
+  flex-grow: 1;
 `;
 
 export const DateHead = styled.div`
@@ -40,6 +65,12 @@ export const DateHead = styled.div`
   letter-spacing: 1.5px;
 
   margin-bottom: 0.5rem;
+
+  @media (min-width: 768px) {
+    ${Body02}
+    letter-spacing: 1.5px;
+    margin-bottom: 1rem;
+  }
 `;
 
 export const DateBoard = styled.div`
@@ -50,25 +81,34 @@ export const DateBoard = styled.div`
   height: 100%;
 `;
 
-export const CalendarTitleWrapper = styled.div`
-  /* align-items: center;
-  margin-left: 2.8rem; */
+export const WeekDateBoard = styled.div`
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(auto-fit, minmax(5rem, 1fr));
+  text-align: center;
+  height: 8rem;
+
+  @media (min-width: 768px) {
+    height: 14rem;
+  }
 `;
 
 export const Month = styled.span`
-  font-weight: 700;
-  font-size: 4rem;
-  line-height: 5.2rem;
-  letter-spacing: -0.6px;
+  ${Display05}
   color: var(--gray-08);
+
+  @media (min-width: 768px) {
+    font-size: 6rem;
+    line-height: 7rem;
+  }
 `;
 
 export const MonthYear = styled.span`
-  font-weight: 700;
-  font-size: 1.4rem;
-  line-height: 2rem;
-  letter-spacing: -0.6px;
+  ${Subhead02}
   color: var(--gray-04);
-
   margin-left: 0.8rem;
+
+  @media (min-width: 768px) {
+    ${Headline}
+  }
 `;
