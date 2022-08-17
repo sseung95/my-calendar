@@ -1,3 +1,4 @@
+/** @jsxImportSource @emotion/react */
 import { ToggleLabel, Active } from './Toggle.styled';
 import { ToggleProps } from './Toggle.types';
 
