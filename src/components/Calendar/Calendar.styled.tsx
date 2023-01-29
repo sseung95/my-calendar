@@ -6,7 +6,10 @@ import {
   Display05,
   Headline,
   Subhead02,
-} from '../../styles/typography';
+} from '@/styles/typography';
+
+// @components
+// @assets
 
 export const CalendarWrapper = styled.div`
   background-color: #fff;

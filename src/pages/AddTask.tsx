@@ -1,4 +1,4 @@
-import AddTaskForm from '../components/TaskForm/AddTaskForm';
+import AddTaskForm from '@/components/TaskForm/AddTaskForm';
 
 const AddTask = () => {
   return <AddTaskForm />;

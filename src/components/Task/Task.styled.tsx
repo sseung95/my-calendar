@@ -6,7 +6,7 @@ import {
   Caption02,
   Headline,
   Subhead02,
-} from '../../styles/typography';
+} from '@/styles/typography';
 
 export const TaskWrapper = styled.div`
   display: flex;

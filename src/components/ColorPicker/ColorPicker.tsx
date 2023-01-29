@@ -1,6 +1,6 @@
-import ColorCircle from './Color';
-import { ColorPickerWrapper } from './ColorPicker.styled';
-import { ColorPickerProps } from './ColorPicker.types';
+import ColorCircle from '@/components/ColorPicker/Color';
+import { ColorPickerWrapper } from '@/components/ColorPicker/ColorPicker.styled';
+import { ColorPickerProps } from '@/components/ColorPicker/ColorPicker.types';
 
 const ColorPicker: React.FC<ColorPickerProps> = ({ label, setLabel }) => {
   return (

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Body01, Caption01 } from '../../styles/typography';
+import { Body01, Caption01 } from '@/styles/typography';
 
 export const LabelWrapper = styled.div<{ labelColor: string }>`
   background-color: ${(props) => props.labelColor};

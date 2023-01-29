@@ -1,10 +1,10 @@
 import { NavLink } from 'react-router-dom';
 
-import calendarIcon from '../../assets/calendar-icon.svg';
-import activeCalendarIcon from '../../assets/calendar-orange-icon.svg';
-import plusIcon from '../../assets/plus-icon.svg';
-import activePlusIcon from '../../assets/plus-orange-icon.svg';
-import { NavWrapper, Ul } from './Navigation.styled';
+import calendarIcon from '@/assets/calendar-icon.svg';
+import activeCalendarIcon from '@/assets/calendar-orange-icon.svg';
+import plusIcon from '@/assets/plus-icon.svg';
+import activePlusIcon from '@/assets/plus-orange-icon.svg';
+import { NavWrapper, Ul } from '@/components/Navigation/Navigation.styled';
 
 const Navigation = () => {
   return (

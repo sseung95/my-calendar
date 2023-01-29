@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Body01, Caption02 } from '../../styles/typography';
+import { Body01, Caption02 } from '@/styles/typography';
 
 export const DayWrapper = styled.div<{ isActive: boolean }>`
   padding: 0.1rem;

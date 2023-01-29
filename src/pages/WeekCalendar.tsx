@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router';
-import CalendarWeek from '../components/Calendar/CalendarWeek';
-import TaskList from '../components/TaskList/TaskList';
+import CalendarWeek from '@/components/Calendar/CalendarWeek';
+import TaskList from '@/components/TaskList/TaskList';
 
 const WeekCalendar = () => {
   const params = useParams();

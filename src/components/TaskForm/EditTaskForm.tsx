@@ -1,18 +1,18 @@
 import { useEffect, useState } from 'react';
-import DateTimePicker from '../DateTimePicker/DateTimePicker';
-import ColorPicker from '../ColorPicker/ColorPicker';
-import Toggle from '../UI/Toggle';
-import checkIcon from '../../assets/check-black-icon.svg';
-import cancelIcon from '../../assets/x-icon.svg';
-import clockIcon from '../../assets/clock-icon.svg';
-import memoIcon from '../../assets/memo-icon.svg';
-import colorIcon from '../../assets/color-icon.svg';
+import DateTimePicker from '@/components/DateTimePicker/DateTimePicker';
+import ColorPicker from '@/components/ColorPicker/ColorPicker';
+import Toggle from '@/components/UI/Toggle';
+import checkIcon from '@/assets/check-black-icon.svg';
+import cancelIcon from '@/assets/x-icon.svg';
+import clockIcon from '@/assets/clock-icon.svg';
+import memoIcon from '@/assets/memo-icon.svg';
+import colorIcon from '@/assets/color-icon.svg';
 import { setHours, setMinutes } from 'date-fns';
 import { useDispatch, useSelector } from 'react-redux';
-import { taskActions } from '../../store/taskSlice';
-import { RootState } from '../../store';
+import { taskActions } from '@/store/taskSlice';
+import { RootState } from '@/store/index';
 import { useNavigate, useParams } from 'react-router';
-import { task } from '../Task/Task.types';
+import { task } from '@/components/Task/Task.types';
 
 import {
   ButtonWrapper,
@@ -22,7 +22,7 @@ import {
   TaskFormRow,
   TaskFormWrapper,
   TitleInput,
-} from './TaskForm.styled';
+} from '@/components/TaskForm/TaskForm.styled';
 
 const EditTaskForm = () => {
   const [title, setTitle] = useState('');
@@ -51,7 +51,6 @@ const EditTaskForm = () => {
 
   useEffect(() => {
     const taskId = params.taskId;
-
     const task = taskList.find((task) => task.id === taskId);
 
     if (task) {
@@ -61,8 +60,6 @@ const EditTaskForm = () => {
       setIsAllDay(task.isAllDay);
       setMemo(task.memo);
       setLabel(task.label);
-
-      console.log(task);
     }
   }, [params]);
 

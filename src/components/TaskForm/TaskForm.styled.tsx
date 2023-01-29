@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Body01, Display02, Display05 } from '../../styles/typography';
+import { Body01, Display02, Display05 } from '@/styles/typography';
 
 export const TaskFormWrapper = styled.div`
   flex-grow: 1;

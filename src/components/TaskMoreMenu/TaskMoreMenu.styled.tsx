@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Body02, Caption02 } from '../../styles/typography';
+import { Body02, Caption02 } from '@/styles/typography';
 
 export const TaskMoreMenuWrapper = styled.div`
   position: absolute;

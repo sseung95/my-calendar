@@ -1,15 +1,15 @@
 import React from 'react';
-import Day from '../Day/Day';
-import prevIcon from '../../assets/left-icon.svg';
-import nextIcon from '../../assets/right-icon.svg';
+import Day from '@/components/Day/Day';
+import prevIcon from '@/assets/left-icon.svg';
+import nextIcon from '@/assets/right-icon.svg';
 import {
   CalendarContent,
   CalendarHeader,
   CalendarWrapper,
   DateBoard,
   DateHead,
-} from './Calendar.styled';
-import { CalendarProps } from './Calendar.types';
+} from '@/components/Calendar/Calendar.styled';
+import { CalendarProps } from '@/components/Calendar/Calendar.types';
 
 const Calendar: React.FC<CalendarProps> = ({
   year,

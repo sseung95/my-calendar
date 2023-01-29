@@ -3,11 +3,11 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { useEffect, useState } from 'react';
 import { ko } from 'date-fns/esm/locale';
 import { addHours } from 'date-fns';
-import rightIcon from '../../assets/right-icon-black.svg';
+import rightIcon from '@/assets/right-icon-black.svg';
 
-import DateTimeInfo from './DateTimeInfo';
-import { DateTimePickerProps } from './DateTimePicker.types';
-import { DateTimePickerWrapper } from './DateTimePicker.styled';
+import DateTimeInfo from '@/components/DateTimePicker/DateTimeInfo';
+import { DateTimePickerProps } from '@/components/DateTimePicker/DateTimePicker.types';
+import { DateTimePickerWrapper } from '@/components/DateTimePicker/DateTimePicker.styled';
 
 const DateTimePicker: React.FC<DateTimePickerProps> = ({
   isAllDay,

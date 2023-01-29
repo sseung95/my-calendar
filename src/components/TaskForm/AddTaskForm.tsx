@@ -2,17 +2,17 @@
 import { useEffect, useState } from 'react';
 import { setHours, setMinutes } from 'date-fns';
 import { useDispatch } from 'react-redux';
-import { taskActions } from '../../store/taskSlice';
+import { taskActions } from '@/store/taskSlice';
 import { useNavigate, useParams } from 'react-router';
-import DateTimePicker from '../DateTimePicker/DateTimePicker';
-import ColorPicker from '../ColorPicker/ColorPicker';
-import Toggle from '../UI/Toggle';
-import checkIcon from '../../assets/check-black-icon.svg';
-import cancelIcon from '../../assets/x-icon.svg';
-import clockIcon from '../../assets/clock-icon.svg';
-import memoIcon from '../../assets/memo-icon.svg';
-import colorIcon from '../../assets/color-icon.svg';
-import { task } from '../Task/Task.types';
+import DateTimePicker from '@/components/DateTimePicker/DateTimePicker';
+import ColorPicker from '@/components/ColorPicker/ColorPicker';
+import Toggle from '@/components/UI/Toggle';
+import checkIcon from '@/assets/check-black-icon.svg';
+import cancelIcon from '@/assets/x-icon.svg';
+import clockIcon from '@/assets/clock-icon.svg';
+import memoIcon from '@/assets/memo-icon.svg';
+import colorIcon from '@/assets/color-icon.svg';
+import { task } from '@/components/Task/Task.types';
 import {
   ButtonWrapper,
   ColumnWrapper,
@@ -21,7 +21,7 @@ import {
   TaskFormRow,
   TaskFormWrapper,
   TitleInput,
-} from './TaskForm.styled';
+} from '@/components/TaskForm/TaskForm.styled';
 
 const AddTaskForm = () => {
   const [title, setTitle] = useState('');
