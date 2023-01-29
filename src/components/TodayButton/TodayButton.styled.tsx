@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Body01, Headline } from '../../styles/typography';
+import { Body01, Headline } from '@/styles/typography';
 
 export const OutlineButton = styled.button`
   ${Body01}

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Display01, Subhead03 } from '../../styles/typography';
+import { Display01, Subhead03 } from '@/styles/typography';
 
 export const Wrapper = styled.div`
   padding: 20px 16px;

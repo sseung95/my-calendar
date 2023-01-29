@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { Route, Routes } from 'react-router';
-import Layout from './components/Layout/Layout';
-import AddTask from './pages/AddTask';
-import EditTask from './pages/EditTask';
-import MonthCalendar from './pages/MonthCalendar';
-import WeekCalendar from './pages/WeekCalendar';
+import Layout from '@/components/Layout/Layout';
+import AddTask from '@/pages/AddTask';
+import EditTask from '@/pages/EditTask';
+import MonthCalendar from '@/pages/MonthCalendar';
+import WeekCalendar from '@/pages/WeekCalendar';
 
 function App() {
   const setScreenSize = () => {

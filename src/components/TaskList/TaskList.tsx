@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { RootState } from '../../store';
-import Task from '../Task/Task';
-import { TaskListProps } from './TaskList.types';
-import addImg from '../../assets/add-button.svg';
+import { RootState } from '@/store/index';
+import Task from '@/components/Task/Task';
+import { TaskListProps } from '@/components/TaskList/TaskList.types';
+import addImg from '@/assets/add-button.svg';
 import {
   AddButton,
   AddButtonWrapper,
@@ -11,7 +11,7 @@ import {
   TaskListViewWrapper,
   TaskListWrapper,
   Wrapper,
-} from './TaskList.styled';
+} from '@/components/TaskList/TaskList.styled';
 import { forwardRef, useEffect, useRef } from 'react';
 
 const TaskList = forwardRef<HTMLDivElement, TaskListProps>(

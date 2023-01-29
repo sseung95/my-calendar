@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import checkIcon from '.././../assets/check-white-icon.svg';
+import checkIcon from '@/assets/check-white-icon.svg';
 
 export const ColorPickerWrapper = styled.div`
   display: grid;

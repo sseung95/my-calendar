@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Body01, Display02, Headline } from '../../styles/typography';
+import { Body01, Display02, Headline } from '@/styles/typography';
 
 export const DateTimePickerWrapper = styled.div`
   display: flex;

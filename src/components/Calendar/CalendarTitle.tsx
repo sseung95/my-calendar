@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { getMonthStr } from '../../utils/dateUtil';
-import { Month, MonthYear } from './Calendar.styled';
-import { CalendarTitleProps } from './Calendar.types';
+import { getMonthStr } from '@/utils/dateUtil';
+import { Month, MonthYear } from '@/components/Calendar/Calendar.styled';
+import { CalendarTitleProps } from '@/components/Calendar/Calendar.types';
 
 const CalendarTitle: React.FC<CalendarTitleProps> = ({ year, month }) => {
   const [monthStr, setMonthStr] = useState(getMonthStr());

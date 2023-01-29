@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import useOutsideClick from '../../hooks/useOutsideClick';
-import { TaskMoreMenuWrapper } from './TaskMoreMenu.styled';
-import { TaskMoreMenuProps } from './TaskMoreMenu.types';
+import useOutsideClick from '@/hooks/useOutsideClick';
+import { TaskMoreMenuWrapper } from '@/components/TaskMoreMenu/TaskMoreMenu.styled';
+import { TaskMoreMenuProps } from '@/components/TaskMoreMenu/TaskMoreMenu.types';
 
 const TaskMoreMenu: React.FC<TaskMoreMenuProps> = ({
   onRemoveTask,

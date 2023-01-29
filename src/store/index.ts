@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import taskSlice from './taskSlice';
+import taskSlice from '@/store/taskSlice';
 
 const persistConfig = {
   key: 'root',

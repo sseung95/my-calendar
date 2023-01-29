@@ -1,5 +1,5 @@
-import { LabelTitle, LabelWrapper } from './Label.styled';
-import { LabelProps } from './Label.types';
+import { LabelTitle, LabelWrapper } from '@/components/Label/Label.styled';
+import { LabelProps } from '@/components/Label/Label.types';
 
 const Label: React.FC<LabelProps> = ({ title, labelColor }) => {
   return (

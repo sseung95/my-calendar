@@ -4,9 +4,9 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 
-import moreIcon from '../../assets/more-icon.svg';
-import { taskActions } from '../../store/taskSlice';
-import TaskMoreMenu from '../TaskMoreMenu/TaskMoreMenu';
+import moreIcon from '@/assets/more-icon.svg';
+import { taskActions } from '@/store/taskSlice';
+import TaskMoreMenu from '@/components/TaskMoreMenu/TaskMoreMenu';
 import {
   Date,
   EndDate,
@@ -18,8 +18,8 @@ import {
   TaskContent,
   TaskWrapper,
   TaskInfoWrapper,
-} from './Task.styled';
-import { taskProps } from './Task.types';
+} from '@/components/Task/Task.styled';
+import { taskProps } from '@/components/Task/Task.types';
 
 const Task: React.FC<taskProps> = ({ task }) => {
   const navigate = useNavigate();

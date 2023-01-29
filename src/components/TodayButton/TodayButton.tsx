@@ -1,5 +1,5 @@
-import { OutlineButton } from './TodayButton.styled';
-import { TodayButtonProps } from './TodayButton.types';
+import { OutlineButton } from '@/components/TodayButton/TodayButton.styled';
+import { TodayButtonProps } from '@/components/TodayButton/TodayButton.types';
 
 const TodayButton: React.FC<TodayButtonProps> = ({ setYear, setMonth }) => {
   const handleGoToday = () => {

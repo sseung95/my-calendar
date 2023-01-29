@@ -1,14 +1,14 @@
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router';
-import { RootState } from '../../store';
-import Label from '../Label/Label';
+import { RootState } from '@/store/index';
+import Label from '@/components/Label/Label';
 import {
   DateStyle,
   DayWrapper,
   LabelListWrapper,
   MoreTaskLen,
-} from './Day.styled';
-import { DayProps } from './Day.types';
+} from '@/components/Day/Day.styled';
+import { DayProps } from '@/components/Day/Day.types';
 
 const Day: React.FC<DayProps> = ({ year, month, date, idx, isActive }) => {
   const navigate = useNavigate();

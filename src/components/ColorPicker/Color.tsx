@@ -1,5 +1,8 @@
-import { ColorInput, ColorLabel } from './ColorPicker.styled';
-import { ColorProps } from './ColorPicker.types';
+import {
+  ColorInput,
+  ColorLabel,
+} from '@/components/ColorPicker/ColorPicker.styled';
+import { ColorProps } from '@/components/ColorPicker/ColorPicker.types';
 
 const ColorCircle: React.FC<ColorProps> = ({ color, label, setLabel }) => {
   const handleChangeColor = (e: React.ChangeEvent<HTMLInputElement>) => {

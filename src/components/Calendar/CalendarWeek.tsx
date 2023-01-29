@@ -1,17 +1,17 @@
 import { forwardRef } from 'react';
 import { useNavigate, useParams } from 'react-router';
-import { getDayStr } from '../../utils/dateUtil';
+import { getDayStr } from '@/utils/dateUtil';
 
-import prevIcon from '../../assets/left-icon.svg';
-import nextIcon from '../../assets/right-icon.svg';
-import Day from '../Day/Day';
-import { CalendarWeekProps } from './Calendar.types';
+import prevIcon from '@/assets/left-icon.svg';
+import nextIcon from '@/assets/right-icon.svg';
+import Day from '@/components/Day/Day';
+import { CalendarWeekProps } from '@/components/Calendar/Calendar.types';
 import {
   CalendarHeader,
   CalendarWeekWrapper,
   DateHead,
   WeekDateBoard,
-} from './Calendar.styled';
+} from '@/components/Calendar/Calendar.styled';
 
 const CalendarWeek = forwardRef<HTMLDivElement, CalendarWeekProps>(
   ({ year, month, date }, ref) => {
