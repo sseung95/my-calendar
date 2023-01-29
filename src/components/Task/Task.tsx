@@ -53,10 +53,12 @@ const Task: React.FC<taskProps> = ({ task }) => {
         <TaskMoreIcon
           src={moreIcon}
           alt="더보기"
-          onClick={() => setShowMore(!showMore)}
+          onClick={() => setShowMore(true)}
         />
 
-        {showMore && <TaskMoreMenu onRemoveTask={removeTask} />}
+        {showMore && (
+          <TaskMoreMenu onRemoveTask={removeTask} setShowMore={setShowMore} />
+        )}
       </div>
     </TaskWrapper>
   );
